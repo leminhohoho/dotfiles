@@ -1,0 +1,34 @@
+background = 181818
+background-opacity = 0.8
+background-blur = 20 
+
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 8.5
+
+bold-is-bright = true
+
+adjust-cell-height = 10%
+
+
+# window-vsync = true
+
+window-decoration = false
+# macos-titlebar-style = hidden
+window-padding-x = 4 
+window-padding-y = 4 
+window-padding-balance = true
+window-inherit-working-directory = false
+
+cursor-invert-fg-bg = true
+cursor-style = block
+cursor-opacity = 0.9
+adjust-cursor-thickness = 2
+
+selection-invert-fg-bg = true
+
+shell-integration-features = no-cursor
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 3
+
+macos-option-as-alt = true

@@ -1,0 +1,32 @@
+# font_family JetBrainsMono Nerd Font Mono
+# font_family 0xProto Nerd Font Mono
+# bold_font JetBrainsMono Nerd Font Mono
+# italic_font JetBrainsMono Nerd Font Mono
+# bold_italic_font JetBrainsMono Nerd Font Mono
+
+shell_integration  no-cursor
+
+background #181818
+background_opacity 0.8
+background_blur 90 
+
+window_padding_width 8 
+
+repaint_delay 10 
+input_delay 1
+
+modify_font cell_height 120%
+
+hide_window_decorations yes
+
+color2 #90a959
+color0 #191919
+
+
+
+# BEGIN_KITTY_FONTS
+font_family      family='JetBrainsMono Nerd Font Mono' postscript_name=JetBrainsMonoNFM-Regular
+bold_font        family='JetBrainsMono Nerd Font Mono' postscript_name=JetBrainsMonoNFM-SemiBold
+italic_font      family='JetBrainsMono Nerd Font Mono' postscript_name=JetBrainsMonoNFM-Italic
+bold_italic_font family='JetBrainsMono Nerd Font Mono' postscript_name=JetBrainsMonoNFM-SemiBoldItalic
+# END_KITTY_FONTS
