@@ -65,7 +65,7 @@ config.bind("gc", ":spawn --userscript git_clone.sh")
 
 # Shortcuts for links
 config.bind("wp", "open -t http://openssl.com")
-config.bind("gpt", "open -t https://chatgpt.com")
+config.bind("ai", "open -t https://claude.ai")
 
 # Navigation
 map = {
@@ -76,12 +76,12 @@ map = {
     "j": {
         "default": "scroll-px 0 300",
         "Ctrl": "tab-next",
-        "Alt": "fake-key --global <Down>",
+        "Shift": "fake-key --global <Down>",
     },
     "k": {
         "default": "scroll-px 0 -300",
         "Ctrl": "tab-prev",
-        "Alt": "fake-key --global <Up>",
+        "Shift": "fake-key --global <Up>",
     },
     "l": {
         "Shift": "forward",
