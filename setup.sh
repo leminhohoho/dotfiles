@@ -10,7 +10,7 @@ $fedora_version
 EOF
 
 echo "Press ENTER to continue"
-read -n 1 -s -r -p ""
+read -n 1 -s -r -p "" </dev/tty
 
 ###################
 ### Wifi set up ###
@@ -28,7 +28,7 @@ else
 	echo "List of available network"
 	nmcli device wifi list
 
-	read -p "Please enter the name of the wifi to connect to: " wifi
+	read -p "Please enter the name of the wifi to connect to: " wifi </dev/tty
 
 	nmcli device wifi connect "$wifi" --ask
 fi
@@ -68,11 +68,11 @@ EOF
 swappiness=$(sudo cat /proc/sys/vm/swappiness)
 echo "Current swapiness: $swappiness"
 echo "Do you want to change your swapiness"
-read -p "[y/n] " decision
+read -p "[y/n] " decision </dev/tty
 
 while [ "$decision" != "y" ] && [ "$decision" != "n" ]
 do
-	read -p "[y/n] " decision
+	read -p "[y/n] " decision </dev/tty
 done
 
 if [[ "$decision" == "n" ]]; then
@@ -81,27 +81,27 @@ else
 	# read -p "Enter a new swappiness value: " swappiness
 	# sudo sysctl vm.swappiness="$swappiness"
 	echo "You will be drop into the editor to edit the swappiness and the overcommit memory behavior, set it to vm.overcommit_memory=1, press ENTER to continue"
-	read -n 1 -s -r -p ""
+	read -n 1 -s -r -p "" </dev/tty
 	sudo nvim /etc/sysctl.conf
 	sudo sysctl -p
-	echo "Your new swappiness is:$(sudo cat /proc/sys/vm/swappiness)"
+	echo "Your new swappiness is:$(sudo cat /proc/sys/vm/swappiness)" </dev/tty
 fi
 echo -e "\nYour current swap size:"
 swapon -s
 
 
 echo "Do you want to change your swapfile size ?"
-read -p "[y/n] " decision
+read -p "[y/n] " decision </dev/tty
 
 while [ "$decision" != "y" ] && [ "$decision" != "n" ]
 do
-	read -p "[y/n] " decision
+	read -p "[y/n] " decision </dev/tty
 done
 
 if [[ "$decision" == "n" ]]; then
 	echo "Skipping swapfile modification"
 else
-	read -p "Please enter the new swap size: " swap_size
+	read -p "Please enter the new swap size: " swap_size </dev/tty
 	
 	while true;
 	do 
@@ -109,7 +109,7 @@ else
 			break
 		fi
 
-		read -p "Invalid format, please enter again: " swap_size
+		read -p "Invalid format, please enter again: " swap_size </dev/tty
 	done
 
 
@@ -146,19 +146,19 @@ Setting up git
 EOF
 
 if [[ -z $(git config --get user.name) ]]; then
-	read -p "Enter your github username: " github_username
+	read -p "Enter your github username: " github_username </dev/tty
 	while [ github_username == "" ]
 	do
-		read -p "No name specified, please enter again: " github_username
+		read -p "No name specified, please enter again: " github_username </dev/tty
 	done
 	git config --global user.name "$github_username"
 fi
 
 if [[ -z $(git config --get user.email) ]]; then
-	read -p "Enter your github email: " github_email
+	read -p "Enter your github email: " github_email </dev/tty
 	while [ github_email == "" ]
 	do
-		read -p "No emaill specified, please enter again: " github_email
+		read -p "No emaill specified, please enter again: " github_email </dev/tty
 	done
 	git config --global user.email "$github_email"
 fi
@@ -179,7 +179,7 @@ fi
 
 sudo cat ~/.ssh/id_ed25519.pub > /tmp/key.txt
 echo -e "Your SSH key is:\n$(cat ~/.ssh/id_ed25519.pub)"
-read -n 1 -s -r -p "Copy this key to your github page, press ENTER to continue"
+read -n 1 -s -r -p "Copy this key to your github page, press ENTER to continue" </dev/tty
 echo ""
 
 ssh -T git@github.com
@@ -193,7 +193,7 @@ echo "Setting up languages"
 echo "Installing snapd..."
 if ! command -v snap &> /dev/null; then
 	sudo dnf install snapd
-	read -n 1 -s -r -p "In order for snap to work, you have to logout and login again, press ENTER now to logout, after that, rerun the script again"
+	read -n 1 -s -r -p "In order for snap to work, you have to logout and login again, press ENTER now to logout, after that, rerun the script again" </dev/tty
 	loginctl terminate-user "$USER"
 	sudo ln -s /var/lib/snapd/snap /snap
 	sudo snap install hello-world
