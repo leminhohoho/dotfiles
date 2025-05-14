@@ -80,7 +80,7 @@ if [[ "$decision" == "n" ]]; then
 else
 	# read -p "Enter a new swappiness value: " swappiness
 	# sudo sysctl vm.swappiness="$swappiness"
-	echo "You will be drop into the editor to edit the swappiness and the overcommit memory behavior, set it to vm.overcommit_memory=1, press ENTER to continue"
+	echo "You will be drop into the editor to edit the swappiness and the overcommit memory behavior, set it to vm.overcommit_memory=1 and also add kernel.printk = 1 4 1 7 for sliencing inputs, press ENTER to continue"
 	read -n 1 -s -r -p "" </dev/tty
 	sudo nvim /etc/sysctl.conf
 	sudo sysctl -p
