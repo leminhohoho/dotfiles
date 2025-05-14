@@ -126,21 +126,6 @@ fi
 ################################
 ### Performance optimization ###
 ################################
-# if ! swapon --noheadings | grep -q '/dev/zram'; then
-#     cat << EOF
-# [zram0]
-# zram-size = ram
-# compression-algorithm = zstd
-# EOF
-#     read -n 1 -s -r -p "You will be dropped to /etc/systemd/zram-generator.conf, add the above text to the configuration file, pree ENTER to process"
-#     sudo nvim /etc/systemd/zram-generator.conf
-#     sudo systemctl daemon-reexec
-#     sudo systemctl restart systemd-zram-setup@zram0
-# else
-#     echo "zram has already been activated"
-# fi
-# swapon --show
-# zramctl
 
 ######################
 ### Changing shell ###
@@ -369,6 +354,5 @@ else
 fi
 
 # FIX: Fix keyboard not being able to use Win key
-# FIX: Fix USB devices not detected automatically
 # TODO: Modularize the script and make it faster
 # TODO: Make the script look nicer (more readable)
