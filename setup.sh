@@ -38,10 +38,10 @@ fi
 ########################################################
 
 echo -e "Checking for update\n"
-sudo dnf update
+sudo dnf update </dev/tty
 
 echo -e "Installing essential tools\n"
-sudo dnf install fastfetch htop neovim fish git openssh-server ufw brightnessctl
+sudo dnf install fastfetch htop neovim fish git openssh-server ufw brightnessctl </dev/tty
 
 #########################
 ### Set up SSH server ###
@@ -182,8 +182,11 @@ echo -e "Your SSH key is:\n$(cat ~/.ssh/id_ed25519.pub)"
 read -n 1 -s -r -p "Copy this key to your github page, press ENTER to continue" </dev/tty
 echo ""
 
-ssh -T git@github.com
-
+if ssh -T git@github.com < /dev/null 2>&1 | grep -q "successfully authenticated"; then
+  echo "✅ GitHub SSH auth is working"
+else
+  echo "❌ SSH auth to GitHub failed"
+fi
 #######################
 ### Languages setup ###
 #######################
@@ -192,7 +195,7 @@ ssh -T git@github.com
 echo "Setting up languages"
 echo "Installing snapd..."
 if ! command -v snap &> /dev/null; then
-	sudo dnf install snapd
+	sudo dnf install snapd </dev/tty
 	read -n 1 -s -r -p "In order for snap to work, you have to logout and login again, press ENTER now to logout, after that, rerun the script again" </dev/tty
 	loginctl terminate-user "$USER"
 	sudo ln -s /var/lib/snapd/snap /snap
@@ -232,7 +235,7 @@ echo "Node version: $(node --version)"
 # Installing java
 echo "Installing Java..."
 if ! command -v java &> /dev/null; then
-	sudo dnf install java-latest-openjdk-devel.aarch64
+	sudo dnf install java-latest-openjdk-devel.aarch64 </dev/tty
 else 
 	echo "Java already installed"
 fi
@@ -251,7 +254,7 @@ echo "Rust version: $(rustc --version)"
 # Installing C/C++
 echo "Installing C/C++..."
 if ! command -v  gcc&> /dev/null; then
-	sudo dnf install clang
+	sudo dnf install clang </dev/tty
 else 
 	echo "C/C++ already installed"
 fi
@@ -259,7 +262,7 @@ fi
 ######################################################################
 ### Installing personalized tools for dotfiles related tools (TUI) ###
 ######################################################################
-sudo dnf install fzf ripgrep
+sudo dnf install fzf ripgrep </dev/tty
 # install starhip
 if ! command -v starship &> /dev/null; then
     curl -sS https://starship.rs/install.sh | sh
@@ -299,8 +302,8 @@ $HOME/go/bin/doffy $HOME/dotfiles
 
 # Install kitty and Hyprland and its dependencies
 echo "Installing Hyprland and its dependencies"
-sudo dnf copr enable solopasha/hyprland
-sudo dnf install kitty hyprland hypridle hyprpaper hyprshot hyprpicker thunar rofi-wayland waybar
+sudo dnf copr enable solopasha/hyprland </dev/tty
+sudo dnf install kitty hyprland hypridle hyprpaper hyprshot hyprpicker thunar rofi-wayland waybar </dev/tty
 
 # Installing hyprland utilities
 
@@ -323,12 +326,12 @@ fi
 
 # Installing browsers
 echo "Installing browser"
-sudo dnf install qutebrowser chromium
+sudo dnf install qutebrowser chromium </dev/tty
 
 # Installing dev tools
 echo "Installing dev tools"
-sudo dnf copr enable atim/lazygit -y
-sudo dnf install tmux cloc lazygit pipx
+sudo dnf copr enable atim/lazygit -y </dev/tty
+sudo dnf install tmux cloc lazygit pipx </dev/tty
 go install github.com/segmentio/golines@latest
 pipx install black
 sudo npm install -g fsouza/prettierd 
@@ -339,12 +342,12 @@ lazygit --version
 
 # Installing OS related tools
 echo "Installing OS related tools"
-sudo dnf install gtk4 
+sudo dnf install gtk4 </dev/tty
 
 
 # Installing miscellaneous tools
 echo "Installing miscellanous tools"
-sudo dnf install zathura zathura-pdf-poppler feh calibre mpv mpg123 youtube-dl pdflatex texlive-scheme-medium texlive texlive-standalone tex-preview ImageMagick
+sudo dnf install zathura zathura-pdf-poppler feh calibre mpv mpg123 youtube-dl pdflatex texlive-scheme-medium texlive texlive-standalone tex-preview ImageMagick </dev/tty
 
 # Setting up Tmux plugin manager
 if ! ls $HOME/.tmux/plugins/tpm &> /dev/null; then
