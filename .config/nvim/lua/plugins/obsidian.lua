@@ -28,7 +28,7 @@ return {
 				-- },
 				{
 					name = "linux",
-					path = "~/note-taking/Elastikós",
+					path = "~/note-taking/Elastikos",
 					overrides = {
 						daily_notes = {
 							folder = "daily notes",

@@ -80,7 +80,7 @@ if [[ "$decision" == "n" ]]; then
 else
 	# read -p "Enter a new swappiness value: " swappiness
 	# sudo sysctl vm.swappiness="$swappiness"
-	echo "You will be drop into the editor to edit the swappiness, press ENTER to continue"
+	echo "You will be drop into the editor to edit the swappiness and the overcommit memory behavior, set it to vm.overcommit_memory=1, press ENTER to continue"
 	read -n 1 -s -r -p ""
 	sudo nvim /etc/sysctl.conf
 	sudo sysctl -p
@@ -122,6 +122,25 @@ else
 	echo "New swap size: "
 	swapon -s
 fi
+
+################################
+### Performance optimization ###
+################################
+# if ! swapon --noheadings | grep -q '/dev/zram'; then
+#     cat << EOF
+# [zram0]
+# zram-size = ram
+# compression-algorithm = zstd
+# EOF
+#     read -n 1 -s -r -p "You will be dropped to /etc/systemd/zram-generator.conf, add the above text to the configuration file, pree ENTER to process"
+#     sudo nvim /etc/systemd/zram-generator.conf
+#     sudo systemctl daemon-reexec
+#     sudo systemctl restart systemd-zram-setup@zram0
+# else
+#     echo "zram has already been activated"
+# fi
+# swapon --show
+# zramctl
 
 ######################
 ### Changing shell ###
@@ -244,6 +263,14 @@ else
 fi
 echo "Rust version: $(rustc --version)"
 
+# Installing C/C++
+echo "Installing C/C++..."
+if ! command -v  gcc&> /dev/null; then
+	sudo dnf install clang
+else 
+	echo "C/C++ already installed"
+fi
+
 ######################################################################
 ### Installing personalized tools for dotfiles related tools (TUI) ###
 ######################################################################
@@ -287,7 +314,8 @@ $HOME/go/bin/doffy $HOME/dotfiles
 
 # Install kitty and Hyprland and its dependencies
 echo "Installing Hyprland and its dependencies"
-sudo dnf install kitty hyprland thunar rofi waybar
+sudo dnf copr enable solopasha/hyprland
+sudo dnf install kitty hyprland hypridle hyprpaper hyprshot hyprpicker thunar rofi-wayland waybar
 
 # Installing hyprland utilities
 
@@ -314,17 +342,33 @@ sudo dnf install qutebrowser chromium
 
 # Installing dev tools
 echo "Installing dev tools"
-## Installing tmux
-sudo dnf install tmux
+sudo dnf copr enable atim/lazygit -y
+sudo dnf install tmux cloc lazygit pipx
+go install github.com/segmentio/golines@latest
+pipx install black
+sudo npm install -g fsouza/prettierd 
+cargo install stylua
 tmux -V
+cloc --version
+lazygit --version
 
-if ls $HOME/.tmux/plugins/tpm &> /dev/null; then
+# Installing OS related tools
+echo "Installing OS related tools"
+sudo dnf install gtk4 
+
+
+# Installing miscellaneous tools
+echo "Installing miscellanous tools"
+sudo dnf install zathura zathura-pdf-poppler feh calibre mpv mpg123 youtube-dl pdflatex texlive-scheme-medium texlive texlive-standalone tex-preview ImageMagick
+
+# Setting up Tmux plugin manager
+if ! ls $HOME/.tmux/plugins/tpm &> /dev/null; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 else
 	echo "tmux plugin manager already installed"
 fi
 
-# FIX: Fix Waybar rendering issue with color and hover
 # FIX: Fix keyboard not being able to use Win key
 # FIX: Fix USB devices not detected automatically
-# FIX: Fix neovim breacumb doesn't follow the transparent background
+# TODO: Modularize the script and make it faster
+# TODO: Make the script look nicer (more readable)

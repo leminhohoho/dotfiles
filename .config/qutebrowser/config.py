@@ -11,7 +11,9 @@ c.tabs.show = "never"
 c.tabs.position = "left"
 c.auto_save.session = True
 c.fonts.default_family = "JetbrainsMono Nerd Font Mono"
+c.fonts.default_size = "8pt"
 c.content.user_stylesheets = "style/style.css"
+c.content.javascript.clipboard = "access-paste"
 c.scrolling.bar = "always"
 c.tabs.padding = {
     "top": 3,
@@ -23,3 +25,4 @@ c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.widgets = ["tabs", "text: - ", "scroll"]
 c.qt.chromium.sandboxing = "disable-all"
+c.zoom.default = "80%"

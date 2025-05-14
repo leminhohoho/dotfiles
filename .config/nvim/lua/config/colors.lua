@@ -15,6 +15,8 @@ vim.cmd([[
   highlight NormalNC guibg=none
   highlight VertSplit guibg=none
   highlight SignColumn guibg=none
+  highlight WinBar guibg=none
+  highlight WinBarNC guibg=none
   highlight WinSeparator guibg=none guifg=#353535
   highlight TelescopeNormal guibg=none
 ]])

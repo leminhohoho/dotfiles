@@ -8,6 +8,7 @@ set -e OPENAI_API_KEY
 set -x ELECTRON_OZONE_PLATFORM_HINT wayland
 set -x QT_QPA_PLATFORM wayland
 set -x GDK_BACKEND wayland
+set -x XDG_CONFIG_HOME "$HOME/.config"
 
 set -x MANPAGER "nvim +Man!"
 set -x FZF_DEFAULT_OPTS "--color 'bg:#181818'"
