@@ -34,9 +34,10 @@ function brightness
    /bin/brightnessctl -d "apple-panel-bl" set $argv 
 end
 
-# function pdf
-#     /bin/zathura $argv& && disown
-# end
+function pdf
+    /bin/zathura $argv&
+    disown
+end
 
 function run_electron
     $argv --appimage-extract-and-run --js-flags="--nodecommit_pooled_pages" & 

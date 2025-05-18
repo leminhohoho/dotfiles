@@ -326,7 +326,7 @@ fi
 
 # Installing browsers
 echo "Installing browser"
-sudo dnf install qutebrowser chromium </dev/tty
+sudo dnf install qutebrowser chromium firefox</dev/tty
 
 # Installing dev tools
 echo "Installing dev tools"
@@ -357,5 +357,7 @@ else
 fi
 
 # FIX: Fix keyboard not being able to use Win key
+# FIX: Add symlink for being able to install package that require --classic flag with snap
+# Fix some interactive shell command still broken
 # TODO: Modularize the script and make it faster
 # TODO: Make the script look nicer (more readable)

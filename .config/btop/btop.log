@@ -1,0 +1,76 @@
+
+2025/05/15 (02:11:20) | ===> btop++ v.1.4.0
+2025/05/15 (02:11:20) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:18:53) | WARNING: Failed to join _runner thread on exit!
+
+2025/05/15 (13:18:57) | ===> btop++ v.1.4.0
+2025/05/15 (13:18:57) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:19:13) | WARNING: Failed to join _runner thread on exit!
+
+2025/05/15 (13:19:14) | ===> btop++ v.1.4.0
+2025/05/15 (13:19:14) | INFO: Logger set to DEBUG
+2025/05/15 (13:19:14) | DEBUG: Using locale en_US.UTF-8
+2025/05/15 (13:19:14) | INFO: Running on /dev/pts/2
+2025/05/15 (13:19:14) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:19:14) | DEBUG: Shared::init() : Initialized.
+2025/05/15 (13:19:50) | WARNING: Failed to join _runner thread on exit!
+2025/05/15 (13:19:50) | DEBUG: Writing new config file
+2025/05/15 (13:19:51) | INFO: Quitting! Runtime: 00:00:37
+
+2025/05/15 (13:19:52) | ===> btop++ v.1.4.0
+2025/05/15 (13:19:52) | INFO: Logger set to DEBUG
+2025/05/15 (13:19:52) | DEBUG: Using locale en_US.UTF-8
+2025/05/15 (13:19:52) | INFO: Running on /dev/pts/2
+2025/05/15 (13:19:52) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:19:52) | DEBUG: Shared::init() : Initialized.
+2025/05/15 (13:20:07) | WARNING: Failed to join _runner thread on exit!
+2025/05/15 (13:20:07) | INFO: Quitting! Runtime: 00:00:15
+
+2025/05/15 (13:20:08) | ===> btop++ v.1.4.0
+2025/05/15 (13:20:08) | INFO: Logger set to DEBUG
+2025/05/15 (13:20:08) | DEBUG: Using locale en_US.UTF-8
+2025/05/15 (13:20:08) | INFO: Running on /dev/pts/2
+2025/05/15 (13:20:08) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:20:08) | DEBUG: Shared::init() : Initialized.
+2025/05/15 (13:20:31) | WARNING: Failed to join _runner thread on exit!
+2025/05/15 (13:20:31) | INFO: Quitting! Runtime: 00:00:23
+
+2025/05/15 (13:20:31) | ===> btop++ v.1.4.0
+2025/05/15 (13:20:31) | INFO: Logger set to DEBUG
+2025/05/15 (13:20:31) | DEBUG: Using locale en_US.UTF-8
+2025/05/15 (13:20:31) | INFO: Running on /dev/pts/2
+2025/05/15 (13:20:31) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (13:20:31) | DEBUG: Shared::init() : Initialized.
+2025/05/15 (14:01:43) | WARNING: Failed to join _runner thread on exit!
+2025/05/15 (14:01:43) | INFO: Quitting! Runtime: 00:41:12
+
+2025/05/15 (14:01:44) | ===> btop++ v.1.4.0
+2025/05/15 (14:01:44) | INFO: Logger set to DEBUG
+2025/05/15 (14:01:44) | DEBUG: Using locale en_US.UTF-8
+2025/05/15 (14:01:44) | INFO: Running on /dev/pts/2
+2025/05/15 (14:01:44) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/15 (14:01:44) | DEBUG: Shared::init() : Initialized.
+2025/05/15 (14:01:52) | DEBUG: Loading theme file: /usr/share/btop/themes/HotPurpleTrafficLight.theme
+2025/05/15 (14:01:53) | DEBUG: Loading theme file: /usr/share/btop/themes/adapta.theme
+2025/05/15 (14:01:54) | DEBUG: Loading theme file: /usr/share/btop/themes/adwaita.theme
+2025/05/15 (14:01:54) | DEBUG: Loading theme file: /usr/share/btop/themes/ayu.theme
+2025/05/15 (14:01:55) | DEBUG: Loading theme file: /usr/share/btop/themes/dracula.theme
+2025/05/15 (14:01:56) | DEBUG: Loading theme file: /usr/share/btop/themes/ayu.theme
+2025/05/15 (14:01:57) | DEBUG: Loading theme file: /usr/share/btop/themes/adwaita.theme
+2025/05/15 (14:01:57) | DEBUG: Loading theme file: /usr/share/btop/themes/ayu.theme
+2025/05/15 (14:01:58) | DEBUG: Loading theme file: /usr/share/btop/themes/dracula.theme
+2025/05/15 (14:01:58) | DEBUG: Loading theme file: /usr/share/btop/themes/dusklight.theme
+2025/05/15 (14:01:59) | DEBUG: Loading theme file: /usr/share/btop/themes/elementarish.theme
+2025/05/15 (14:01:59) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-hard.theme
+2025/05/15 (14:02:00) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-medium.theme
+2025/05/15 (14:02:00) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-hard.theme
+2025/05/15 (14:02:18) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-medium.theme
+2025/05/15 (14:02:20) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix-light.theme
+2025/05/15 (14:02:21) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-medium.theme
+2025/05/15 (14:02:21) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix-light.theme
+2025/05/15 (14:02:22) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix.theme
+2025/05/15 (14:02:22) | DEBUG: Loading theme file: /usr/share/btop/themes/greyscale.theme
+2025/05/15 (14:02:23) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark.theme
+2025/05/15 (14:02:25) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+2025/05/15 (14:02:25) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_light.theme
+2025/05/15 (14:02:26) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme

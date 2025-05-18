@@ -53,7 +53,7 @@ bind("n", "<leader>db", function()
 end)
 
 -- Oil.nvim keymaps
-bind("n", "<leader>oo", ":Oil<CR>")
+bind("n", "<leader>o", ":Oil<CR>")
 
 -- Lazygit keymaps
 bind("n", "<leader>lg", ":LazyGit<CR>")
