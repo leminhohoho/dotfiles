@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  content.pdfjs:
-    global: false
-  tabs.show:
-    global: never
+  content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: true

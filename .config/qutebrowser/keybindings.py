@@ -60,14 +60,14 @@ config.bind(
     'hint links spawn nohup mpv -ao=pulse --cache=yes --demuxer-max-bytes=300M --demuxer-max-back-bytes=100M -ytdl-format="bv[ext=mp4]+ba/b" {hint-url}',
 )
 config.bind("Y", 'hint links spawn nohup chromium-browser "{hint-url}"')
-config.bind("P", "hint links userscript zathura.sh")
+config.bind("P", "hint links spawn --userscript zathura.sh")
 
 # Automations
 config.bind("gc", ":spawn --userscript git_clone.sh")
 
 # Shortcuts for links
 config.bind("wp", "open -t http://openssl.com")
-config.bind("gpt", "open -t https://chatgpt.com")
+config.bind("ai", "open -t https://grok.com")
 
 # Navigation
 map = {

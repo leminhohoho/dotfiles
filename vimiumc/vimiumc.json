@@ -1,0 +1,21 @@
+{
+	"name": "Vimium C",
+	"@time": "5/24/2025, 11:16:18 PM",
+	"time": 1748103378436,
+	"environment": {
+		"extension": "2.12.2",
+		"platform": "linux",
+		"chromium": 136
+	},
+	"allBrowserUrls": true,
+	"keyLayout": 2,
+	"keyupTime": 50,
+	"smoothScroll": false,
+	"userDefinedCss": [
+		"* {",
+		"  font-family: \"JetBrainsMono Nerd Font Mono\"",
+		"}",
+		""
+	],
+	"vimSync": true
+}

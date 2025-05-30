@@ -1,16 +1,6 @@
 config.load_autoconfig(False)
 config.source("keybindings.py")
 
-config.set(
-    "qt.args",
-    [
-        "ignore-gpu-blocklist",
-        "enable-gpu-rasterization",
-        "enable-accelerated-video-decode",
-        "enable-quic",
-        "enable-zero-copy",
-    ],
-)
 c.url.searchengines = {
     "DEFAULT": "https://google.com/search?q={}",
     "scholar": "https://scholar.google.com/scholar?q={}",
@@ -31,10 +21,8 @@ c.tabs.padding = {
     "left": 5,
     "right": 5,
 }
-c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.widgets = ["tabs", "text: - ", "scroll"]
-c.qt.chromium.sandboxing = "disable-all"
 c.zoom.default = "80%"
 c.qt.highdpi = True
 

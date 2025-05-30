@@ -3,7 +3,10 @@ return {
 	---@type snacks.Config
 	opts = {
 		image = {
-			max_width = 120,
+			doc = {
+				max_width = 40,
+				max_height = 40,
+			},
 			math = {
 				enabled = true,
 			},

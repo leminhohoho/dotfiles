@@ -74,3 +74,107 @@
 2025/05/15 (14:02:25) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
 2025/05/15 (14:02:25) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_light.theme
 2025/05/15 (14:02:26) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/20 (11:34:45) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_light.theme
+2025/05/20 (11:34:49) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/20 (11:35:04) | DEBUG: Writing new config file
+2025/05/20 (11:35:04) | INFO: Quitting! Runtime: 4d 21:33:20
+
+2025/05/20 (11:35:05) | ===> btop++ v.1.4.0
+2025/05/20 (11:35:05) | INFO: Logger set to DEBUG
+2025/05/20 (11:35:05) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:35:05) | INFO: Running on /dev/pts/2
+2025/05/20 (11:35:05) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/20 (11:35:05) | DEBUG: Shared::init() : Initialized.
+2025/05/20 (11:35:05) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/20 (11:36:13) | DEBUG: Writing new config file
+2025/05/20 (11:36:13) | INFO: Quitting! Runtime: 00:01:08
+
+2025/05/20 (11:36:17) | ===> btop++ v.1.4.0
+2025/05/20 (11:36:17) | INFO: Logger set to DEBUG
+2025/05/20 (11:36:17) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:36:17) | INFO: Running on /dev/pts/2
+2025/05/20 (11:36:17) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/20 (11:36:17) | DEBUG: Shared::init() : Initialized.
+2025/05/20 (11:36:17) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+
+2025/05/20 (11:36:21) | ===> btop++ v.1.4.0
+2025/05/20 (11:36:21) | INFO: Logger set to DEBUG
+2025/05/20 (11:36:21) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:36:21) | INFO: Running on /dev/pts/2
+2025/05/20 (11:36:21) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/20 (11:36:21) | DEBUG: Shared::init() : Initialized.
+2025/05/20 (11:36:21) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/20 (11:36:36) | WARNING: Failed to join _runner thread on exit!
+2025/05/20 (11:36:36) | DEBUG: Writing new config file
+2025/05/20 (11:36:36) | INFO: Quitting! Runtime: 00:00:15
+
+2025/05/20 (11:36:46) | ===> btop++ v.1.4.0
+2025/05/20 (11:36:46) | INFO: Logger set to DEBUG
+2025/05/20 (11:36:46) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:36:46) | INFO: Running on /dev/pts/2
+2025/05/20 (11:36:46) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/20 (11:36:46) | DEBUG: Shared::init() : Initialized.
+2025/05/20 (11:36:46) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/20 (11:36:47) | WARNING: Failed to join _runner thread on exit!
+2025/05/20 (11:36:47) | INFO: Quitting! Runtime: 00:00:01
+
+2025/05/20 (11:36:49) | ===> btop++ v.1.4.0
+2025/05/20 (11:36:49) | INFO: Logger set to DEBUG
+2025/05/20 (11:36:49) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:36:49) | ERROR: No tty detected!
+btop++ needs an interactive shell to run.
+2025/05/20 (11:36:49) | INFO: Quitting! Runtime: 00:00:00
+
+2025/05/20 (11:36:54) | ===> btop++ v.1.4.0
+2025/05/20 (11:36:54) | INFO: Logger set to DEBUG
+2025/05/20 (11:36:54) | DEBUG: Using locale en_US.UTF-8
+2025/05/20 (11:36:54) | INFO: Running on /dev/pts/2
+2025/05/20 (11:36:54) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/20 (11:36:54) | DEBUG: Shared::init() : Initialized.
+2025/05/20 (11:36:54) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/21 (09:00:29) | ERROR: Stall in Runner thread, restarting!
+
+2025/05/22 (11:13:19) | ===> btop++ v.1.4.0
+2025/05/22 (11:13:19) | INFO: Logger set to DEBUG
+2025/05/22 (11:13:20) | DEBUG: Using locale en_US.UTF-8
+2025/05/22 (11:13:20) | INFO: Running on /dev/pts/0
+2025/05/22 (11:13:20) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/22 (11:13:20) | DEBUG: Shared::init() : Initialized.
+2025/05/22 (11:13:20) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/22 (11:13:38) | WARNING: Failed to join _runner thread on exit!
+2025/05/22 (11:13:38) | DEBUG: Writing new config file
+2025/05/22 (11:13:38) | INFO: Quitting! Runtime: 00:00:19
+
+2025/05/22 (11:18:31) | ===> btop++ v.1.4.0
+2025/05/22 (11:18:31) | INFO: Logger set to DEBUG
+2025/05/22 (11:18:31) | DEBUG: Using locale en_US.UTF-8
+2025/05/22 (11:18:31) | INFO: Running on /dev/pts/6
+2025/05/22 (11:18:31) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/22 (11:18:31) | DEBUG: Shared::init() : Initialized.
+2025/05/22 (11:18:31) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+
+2025/05/24 (23:05:15) | ===> btop++ v.1.4.0
+2025/05/24 (23:05:15) | INFO: Logger set to DEBUG
+2025/05/24 (23:05:15) | DEBUG: Using locale en_US.UTF-8
+2025/05/24 (23:05:15) | INFO: Running on /dev/pts/11
+2025/05/24 (23:05:15) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/24 (23:05:15) | DEBUG: Shared::init() : Initialized.
+2025/05/24 (23:05:15) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/05/26 (14:22:46) | WARNING: Failed to join _runner thread on exit!
+2025/05/26 (14:22:46) | INFO: Quitting! Runtime: 1d 15:17:31
+
+2025/05/26 (14:22:50) | ===> btop++ v.1.4.0
+2025/05/26 (14:22:50) | INFO: Logger set to DEBUG
+2025/05/26 (14:22:50) | DEBUG: Using locale en_US.UTF-8
+2025/05/26 (14:22:50) | INFO: Running on /dev/pts/11
+2025/05/26 (14:22:50) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/26 (14:22:50) | DEBUG: Shared::init() : Initialized.
+2025/05/26 (14:22:50) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+
+2025/05/26 (14:24:59) | ===> btop++ v.1.4.0
+2025/05/26 (14:24:59) | INFO: Logger set to DEBUG
+2025/05/26 (14:24:59) | DEBUG: Using locale en_US.UTF-8
+2025/05/26 (14:24:59) | INFO: Running on /dev/pts/1
+2025/05/26 (14:24:59) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/05/26 (14:24:59) | DEBUG: Shared::init() : Initialized.
+2025/05/26 (14:24:59) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme

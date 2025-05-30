@@ -46,6 +46,6 @@ return {
 			end,
 		})
 
-		vim.keymap.set("n", "<leader>of", "<cmd>ObsidianSearch<CR>")
+		-- vim.keymap.set("n", "<leader>of", "<cmd>ObsidianSearch<CR>")
 	end,
 }
