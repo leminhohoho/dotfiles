@@ -15,7 +15,7 @@ return {
 				python = { "black" },
 				json = { "jq" },
 				css = { "prettierd" },
-				d2 = { "d2" },
+				-- d2 = { "d2" },
 				zig = { "zigfmt" },
 			},
 
@@ -31,6 +31,9 @@ return {
 				},
 				jq = {
 					-- args = { "-c", "." },
+				},
+				black = {
+					args = { "--line-length", "200", "--quiet", "-" },
 				},
 			},
 		})

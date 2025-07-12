@@ -38,6 +38,7 @@
   "taskwarrior.nvim": { "branch": "master", "commit": "5383427b88912ff3c37653d76e48b1fc197844dc" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
+  "tree-sitter-d2": { "branch": "main", "commit": "f40a9fa426d55a03cedd17475e4d6affe755a1ae" },
   "treewalker.nvim": { "branch": "main", "commit": "ed3775f6621ee6c3026faa27983b85a63765492a" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "vim-dadbod": { "branch": "master", "commit": "9f0ca8bcef704659820a95c3bbd2c262583a66a1" },

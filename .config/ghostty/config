@@ -3,7 +3,7 @@ background-opacity = 0.8
 background-blur = 20 
 
 font-family = JetBrainsMono Nerd Font Mono
-font-size = 8.5
+font-size =  5
 
 bold-is-bright = true
 
@@ -29,6 +29,6 @@ selection-invert-fg-bg = true
 shell-integration-features = no-cursor
 
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 3
+mouse-scroll-multiplier = 1
 
 macos-option-as-alt = true

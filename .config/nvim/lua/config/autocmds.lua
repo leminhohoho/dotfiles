@@ -37,18 +37,26 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 	end,
 })
+--
+-- -- Optisns for csv files
+-- vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
+-- 	callback = function(args)
+-- 		filetype = vim.bo[args.buf].filetype
+-- 		if filetype == "csv" then
+-- 			vim.cmd("CsvViewEnable")
+-- 			vim.opt.wrap = false
+-- 		else
+-- 			vim.cmd("CsvViewDisable")
+-- 			vim.cmd("set wrap")
+-- 			vim.cmd("set linebreak")
+-- 		end
+-- 	end,
+-- })
 
--- Optisns for csv files
-vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
-	callback = function(args)
-		filetype = vim.bo[args.buf].filetype
-		if filetype == "csv" then
-			vim.cmd("CsvViewEnable")
-			vim.opt.wrap = false
-		else
-			vim.cmd("CsvViewDisable")
-			vim.cmd("set wrap")
-			vim.cmd("set linebreak")
-		end
+-- Disable wrap for .dbout
+vim.api.nvim_create_autocmd({ "BufRead", "BufRead", "BufNewFile" }, {
+	pattern = "*.dbout",
+	callback = function()
+		vim.cmd("setlocal nowrap")
 	end,
 })

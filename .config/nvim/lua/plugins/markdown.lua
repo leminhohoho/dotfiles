@@ -26,7 +26,13 @@ return {
 				},
 				checkbox = {
 					custom = {
-						todo = { raw = "[~]", rendered = "󰀃 ", highlight = "@constructor", scope_highlight = nil },
+						subject_to_change = {
+							raw = "[~]",
+							rendered = " ",
+							highlight = "@function",
+							scope_highlight = nil,
+						},
+						todo = { raw = "[!]", rendered = "󰀃 ", highlight = "@constructor", scope_highlight = nil },
 					},
 				},
 				quote = { repeat_linebreak = true },

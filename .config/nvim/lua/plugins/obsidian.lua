@@ -21,6 +21,9 @@ return {
 		local obsidian = require("obsidian")
 
 		obsidian.setup({
+			templates = {
+				folder = "9 - Templates",
+			},
 			workspaces = {
 				-- {
 				-- 	name = "mac",
@@ -29,6 +32,15 @@ return {
 				{
 					name = "linux",
 					path = "~/note-taking/Elastikos",
+					overrides = {
+						daily_notes = {
+							folder = "daily notes",
+						},
+					},
+				},
+				{
+					name = "note",
+					path = "~/note-taking/Monadikos",
 					overrides = {
 						daily_notes = {
 							folder = "daily notes",

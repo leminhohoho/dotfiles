@@ -5,10 +5,16 @@ function fish_prompt
 end
 
 set -e OPENAI_API_KEY
+# set -x ELECTRON_OZONE_PLATFORM_HINT wayland
+# set -x QT_QPA_PLATFORM wayland
+# set -x GDK_BACKEND wayland
+# set -x XDG_CONFIG_HOME "$HOME/.config"
+# set -x QT_SCALE_FACTOR 1
 set -x ELECTRON_OZONE_PLATFORM_HINT wayland
-set -x QT_QPA_PLATFORM wayland
+set -x QT_QPA_PLATFORM xcb
 set -x GDK_BACKEND wayland
 set -x XDG_CONFIG_HOME "$HOME/.config"
+# set -x QT_SCALE_FACTOR 2  # Try this or unset QT_SCALE_FACTOR
 
 set -x MANPAGER "nvim +Man!"
 set -x FZF_DEFAULT_OPTS "--color 'bg:#181818'"

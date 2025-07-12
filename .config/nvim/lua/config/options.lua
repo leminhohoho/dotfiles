@@ -25,6 +25,9 @@ vim.g.netrw_banner = 0
 -- Show directories first (sorting)
 vim.g.netrw_sort_sequence = [[[\/]$,*]]
 
+-- Disable dadbod nvim execute query on save
+vim.g.db_ui_execute_on_save = 0
+
 -- MISCELLANEOUS --
 -- Set line breaks to preserve words
 vim.cmd("set linebreak")
