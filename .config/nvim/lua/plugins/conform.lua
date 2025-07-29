@@ -1,8 +1,12 @@
+local home = vim.fn.expand("~")
+
 return {
 	"stevearc/conform.nvim",
 	opts = {},
 	config = function()
 		local conform = require("conform")
+		local home = vim.fn.expand("~")
+
 		conform.setup({
 			formatters_by_ft = {
 				templ = { "templ" },
@@ -15,25 +19,37 @@ return {
 				python = { "black" },
 				json = { "jq" },
 				css = { "prettierd" },
-				-- d2 = { "d2" },
 				zig = { "zigfmt" },
+				sql = { "sql_formatter" },
 			},
 
 			timeout_ms = 10000,
 
 			formatters = {
 				goimports = {
-					command = "/home/leminhohoho/go/bin/goimports",
+					command = home .. "/go/bin/goimports",
 				},
 				golines = {
-					command = "/home/leminhohoho/go/bin/golines",
-					args = { "--max-len=110" },
-				},
-				jq = {
-					-- args = { "-c", "." },
+					command = home .. "/go/bin/golines",
+					args = { "--max-len=120" },
 				},
 				black = {
-					args = { "--line-length", "200", "--quiet", "-" },
+					args = { "--line-length", "120", "--quiet", "-" },
+				},
+				sqlfluff = {
+					command = home .. "/.local/bin/sqlfluff",
+					args = { "format", "--dialect=sqlite", "-" },
+					stdin = true,
+				},
+				sql_formatter = {
+					command = "/usr/local/bin/sql-formatter",
+					args = {
+						"--language",
+						"sqlite",
+						"--config",
+						home .. "/.sql-formatter.json",
+					},
+					stdin = true,
 				},
 			},
 		})

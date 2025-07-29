@@ -1,64 +1,64 @@
--- Function apply colors to specific filetype
-local assign = function(pattern, callback)
-	vim.api.nvim_create_autocmd("BufEnter", {
-		pattern = pattern,
-		callback = callback,
-	})
-end
+-- Modify colors for each colorscheme
+vim.api.nvim_create_autocmd({ "Colorscheme" }, {
+	callback = function()
+		-- Modify color scheme for transparency mode
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+		vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
+		vim.api.nvim_set_hl(0, "WinBarNC", { bg = "none" })
+		vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", fg = "#3c3836" })
+		vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 
--- Modify color scheme for transparency mode
-vim.cmd([[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-  highlight NormalNC guibg=none
-  highlight VertSplit guibg=none
-  highlight SignColumn guibg=none
-  highlight WinBar guibg=none
-  highlight WinBarNC guibg=none
-  highlight WinSeparator guibg=none guifg=#353535
-  highlight TelescopeNormal guibg=none
-]])
+		-- Modify color for illuminate.nvim
+		vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#504954", underline = false })
 
--- Telescope borders --
-vim.cmd("highlight TelescopeBorder guifg=#F9F6EE")
+		-- Moddify color for notification
+		vim.api.nvim_set_hl(0, "NotificationInfo", { bg = "none" })
 
--- Code color adjustment --
-vim.cmd("highlight Function gui=bold")
-vim.cmd("highlight Comment guifg=#636a74 gui=italic")
-vim.cmd("highlight @type gui=italic")
-vim.cmd("highlight @string.escape guifg=#CEFE86")
-vim.cmd("highlight ParenBlue guifg=#79c0ff")
-vim.cmd("highlight ParenYellow guifg=#e2b340")
-vim.cmd("highlight ParenGreen guifg=#54d062")
-vim.cmd("highlight ParenLightPink guifg=#fda097")
-vim.cmd("highlight ParenPink guifg=#ff9bce")
-vim.cmd("highlight ParenPurple guifg=#ff9bce")
+		-- Modify diagnostic virtual text to match the sign color
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { link = "DiagnosticSignError" })
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarning", { link = "DiagnosticSignWarning" })
 
--- Status line color adjustment --
-vim.cmd("highlight statusline guifg=white guibg=NONE gui=NONE")
-vim.cmd("highlight statuslineNC guifg=black guibg=NONE gui=NONE")
+		local colorscheme = vim.g.colors_name
 
--- Notification color adjustment --
-vim.cmd("highlight NotificationInfo guifg=#7CFC00 guibg=NONE")
+		if colorscheme == "gruvbox" then
+			vim.cmd("highlight GruvboxRedSign guibg=none")
+			vim.cmd("highlight GruvboxYellowSign guibg=none")
+			vim.cmd("highlight GruvboxBlueSign guibg=none")
 
--- Modify zen bg color --
-vim.cmd("highlight ZenBg guibg=none")
+			-- Telescope borders
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "GruvboxBg3" })
+			vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { link = "GruvboxBg3" })
+			vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { link = "GruvboxBg3" })
+			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { link = "GruvboxBg3" })
+		elseif colorscheme == "gruvbox-material" then
+			-- Telescope borders
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Comment" })
+			vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { link = "Comment" })
+			vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { link = "Comment" })
+			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { link = "Comment" })
 
--- Markdown color options --
-assign("*.md", function()
-	vim.cmd("highlight @markup.heading.1.markdown guibg=#00FFFFFF guifg=#d29922 gui=bold")
-	vim.cmd("highlight @markup.heading.2.markdown guibg=#00FFFFFF guifg=#3fb950 gui=bold")
-	vim.cmd("highlight @markup.heading.3.markdown guibg=#00FFFFFF guifg=#ab8ad1 gui=bold")
-	vim.cmd("highlight Normal guibg=#00FFFFFF guifg=#EDEADE")
-	vim.cmd("highlight NormalNC guibg=#00FFFFFF guifg=#EDEADE")
-	vim.cmd("highlight @markup.quote.markdown guibg=#00FFFFFF guifg=#FFF8DC gui=italic")
-	vim.cmd("highlight RenderMarkdownCodeInline guibg=#1d2a37 guifg=#ef3745 gui=bold")
-	vim.cmd("highlight @markup.link.label guifg=#4169E1 gui=bold")
-	vim.cmd("highlight RenderMarkdownCode guibg=#1d2a39")
-end)
+			-- Noice cmdline
+			vim.api.nvim_set_hl(0, "NoiceCmdlineIcon", { link = "Green" })
+			vim.api.nvim_set_hl(0, "NoiceCmdlinePopUpTitle", { link = "Green" })
+			vim.api.nvim_set_hl(0, "NoiceCmdlinePopUpBorder", { link = "Green" })
 
--- Modify NOTE todo comment --
-vim.cmd("highlight TodoBgNOTE guifg=#000000 guibg=#54d062 gui=bold")
-vim.cmd("highlight TodoFgNOTE guifg=#54d062")
+			-- Zen mode background
+			vim.api.nvim_set_hl(0, "ZenBg", { bg = "none" })
+		end
+	end,
+})
+
+-- Modify color for markdown files
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*.md",
+	callback = function()
+		vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { bg = "none", fg = "#d29922", bold = true })
+		vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { bg = "none", fg = "#3fb950", bold = true })
+		vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { bg = "none", fg = "#ab8ad1", bold = true })
+		vim.api.nvim_set_hl(0, "Normal", { fg = "#ebdbb2" })
+		vim.api.nvim_set_hl(0, "NormalNC", { fg = "#ebdbb2" })
+	end,
+})

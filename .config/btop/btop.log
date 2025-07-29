@@ -238,3 +238,13 @@ btop++ needs an interactive shell to run.
 2025/07/12 (20:49:58) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
 2025/07/12 (20:50:01) | WARNING: Failed to join _runner thread on exit!
 2025/07/12 (20:50:01) | INFO: Quitting! Runtime: 00:00:03
+
+2025/07/25 (16:10:43) | ===> btop++ v.1.4.0
+2025/07/25 (16:10:43) | INFO: Logger set to DEBUG
+2025/07/25 (16:10:43) | DEBUG: Using locale en_US.UTF-8
+2025/07/25 (16:10:43) | INFO: Running on /dev/pts/1
+2025/07/25 (16:10:43) | WARNING: No good candidate for cpu sensor found, using random from all found sensors.
+2025/07/25 (16:10:43) | DEBUG: Shared::init() : Initialized.
+2025/07/25 (16:10:43) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2025/07/25 (16:10:46) | WARNING: Failed to join _runner thread on exit!
+2025/07/25 (16:10:46) | INFO: Quitting! Runtime: 00:00:03

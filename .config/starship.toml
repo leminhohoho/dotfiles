@@ -1,14 +1,14 @@
 add_newline = false
 
 [character]
-success_symbol = '[❯](#FAA0A0)'
+success_symbol = '[❯](#8ec07c)'
 
 [os]
 disabled = false
 
 [username]
 show_always = true
-style_user = "#FAA0A0"
+style_user = "#8ec07c"
 
 [aws]
 symbol = "  "
@@ -49,7 +49,7 @@ symbol = " "
 
 [git_branch]
 symbol = " "
-style = "#F88379"
+style = "#8ec07c"
 
 [git_commit]
 tag_symbol = '  '

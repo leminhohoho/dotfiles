@@ -1,22 +1,22 @@
 vim.g.mapleader = " "
 
-local bind = function(mode, key, command)
+local silent_bind = function(mode, key, command)
 	vim.keymap.set(mode, key, command, { silent = true })
 end
 
 -------------------- DISABLE KEYMAPS --------------------
-bind("n", "<up>", ':echo "Deez nuts"<CR>')
-bind("n", "<down>", ':echo "Deez nuts"<CR>')
-bind("n", "<left>", ':echo "Deez nuts"<CR>')
-bind("n", "<right>", ':echo "Deez nuts"<CR>')
+silent_bind("n", "<up>", ':echo "Deez nuts"<CR>')
+silent_bind("n", "<down>", ':echo "Deez nuts"<CR>')
+silent_bind("n", "<left>", ':echo "Deez nuts"<CR>')
+silent_bind("n", "<right>", ':echo "Deez nuts"<CR>')
 
 -------------------- WORKBENCH KEYMAPS --------------------
 -- Split buffers
-bind("n", "<leader>sv", ":vsplit<CR>")
-bind("n", "<leader>sh", ":split<CR>")
+silent_bind("n", "<leader>sv", ":vsplit<CR>")
+silent_bind("n", "<leader>sh", ":split<CR>")
 
 -- Toggle netrw
-bind("n", "<leader>e", function()
+silent_bind("n", "<leader>e", function()
 	local filetype = vim.bo.filetype
 
 	if filetype == "netrw" then
@@ -27,17 +27,18 @@ bind("n", "<leader>e", function()
 end)
 
 -- Auto session keymaps
-bind("n", "<leader>wr", ":SessionRestore<CR>")
-bind("n", "<leader>ws", ":SessionSave<CR>")
+silent_bind("n", "<leader>wr", ":SessionRestore<CR>")
+silent_bind("n", "<leader>ws", ":SessionSave<CR>")
 
 -- Telescope keymaps
-bind("n", "<leader>ff", ":Telescope find_files<CR>")
-bind("n", "<leader>fg", ":Telescope live_grep<CR>")
-bind("n", "<leader>fb", ":Telescope buffers<CR>")
-bind("n", "<leader>fh", ":Telescope help_tags<CR>")
-bind("n", "<Leader>hh", ":Telescope highlights<CR>")
+silent_bind("n", "<leader>ff", ":Telescope find_files<CR>")
+silent_bind("n", "<leader>fg", ":Telescope live_grep<CR>")
+silent_bind("n", "<leader>fb", ":Telescope buffers<CR>")
+silent_bind("n", "<leader>fh", ":Telescope help_tags<CR>")
+silent_bind("n", "<Leader>hh", ":Telescope highlights<CR>")
+
 -- Open todo comments with telescope
-bind("n", "<leader>td", function()
+silent_bind("n", "<leader>td", function()
 	require("telescope").extensions["todo-comments"].todo({
 		layout_strategy = "vertical",
 		layout_config = {
@@ -45,45 +46,87 @@ bind("n", "<leader>td", function()
 			height = 0.8,
 		},
 	})
-end, { noremap = true, silent = true })
-
--- Open Dbee
-bind("n", "<leader>db", function()
-	require("dbee").open()
 end)
 
+-- Trouble keymaps
+silent_bind("n", "<leader>xx", ":Trouble diagnostics toggle<CR>")
+
 -- Oil.nvim keymaps
-bind("n", "<leader>o", ":Oil<CR>")
+silent_bind("n", "<leader>o", ":Oil<CR>")
 
 -- Lazygit keymaps
-bind("n", "<leader>lg", ":LazyGit<CR>")
+silent_bind("n", "<leader>lg", ":LazyGit<CR>")
 
 -- Namu.nvim keymaps
-bind("n", "<leader>ss", ":Namu symbols<CR>")
+silent_bind("n", "<leader>ss", ":Namu symbols<CR>")
 
--- Moving around in tree walker
-bind("n", "<leader>j", ":Treewalker Down<CR>")
-bind("n", "<leader>k", ":Treewalker Up<CR>")
-bind("n", "<leader>h", ":Treewalker Left<CR>")
-bind("n", "<leader>l", ":Treewalker Right<CR>")
-
--- Toggling cursor center
-bind("n", "<leader>tc", ':lua require("stay-centered").toggle()<CR>')
+-- Remove openning pop ups
+silent_bind("n", "<leader><leader>", "<cmd>NoiceDismiss<CR>")
 
 -------------------- CODING KEYMAPS --------------------
 -- Go to start & end of line
-bind({ "n", "v" }, "fh", "^")
-bind({ "n", "v" }, "fl", "$")
+silent_bind({ "n", "v" }, "fh", "^")
+silent_bind({ "n", "v" }, "fl", "$")
 
 -- Copy to clipboard
-bind("v", "<leader>y", '"+y')
-bind("n", "<leader>yy", '"+yy')
+silent_bind("v", "<leader>y", '"+y')
+silent_bind("n", "<leader>yy", '"+yy')
 
 -- Turn of search highlight
-bind("n", "<leader>th", ":nohlsearch<CR>")
+silent_bind("n", "<leader>th", ":nohlsearch<CR>")
+
+-- Moving around in tree walker
+silent_bind("n", "<leader>j", ":Treewalker Down<CR>")
+silent_bind("n", "<leader>k", ":Treewalker Up<CR>")
+silent_bind("n", "<leader>h", ":Treewalker Left<CR>")
+silent_bind("n", "<leader>l", ":Treewalker Right<CR>")
 
 -------------------- NOTE TAKING KEYMAPS --------------------
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*.md",
+	callback = function()
+		-- Open TOC
+		silent_bind("n", "<leader>toc", ":ObsidianTOC<CR>")
+		-- Search obsidian tags
+		silent_bind("n", "<leader>st", ":ObsidianTags<CR>")
+		-- Rename file (update across backlinks)
+		silent_bind("n", "<leader>rn", ":ObsidianRename<CR>")
 
+		-- Command for inserting code block
+		vim.api.nvim_create_user_command("Block", function(opts)
+			local language = opts.args ~= "" and opts.args or ""
+
+			vim.api.nvim_put({ "```" .. language, "", "```" }, "c", true, true)
+			vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1] - 1, 0 })
+		end, { nargs = "?" })
+
+		-- Command for inserting callout block
+		vim.api.nvim_create_user_command("CO", function(opts)
+			local callout_name = opts.args ~= "" and opts.args or ""
+
+			vim.api.nvim_put({ "> [!" .. string.upper(callout_name) .. "]", "> " }, "c", true, true)
+		end, {
+			nargs = "?",
+			complete = function(arg_lead)
+				local suggestions = {
+					"Note",
+					"Important",
+					"Dict",
+					"Example",
+				}
+
+				local filtered = {}
+				for _, suggestion in ipairs(suggestions) do
+					if suggestion:lower():find(arg_lead:lower(), 1, true) then
+						table.insert(filtered, suggestion)
+					end
+				end
+
+				return filtered
+			end,
+		})
+	end,
+})
 -------------------- CUSTOM COMMANDS --------------------
 -- Command to save using Confom.nvim specifically
 vim.api.nvim_create_user_command("W", function(args)

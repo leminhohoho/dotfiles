@@ -51,3 +51,5 @@ function run_electron
 end
 
 starship init fish | source
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

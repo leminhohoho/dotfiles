@@ -1,0 +1,16 @@
+[sqlfluff]
+dialect = sqlite
+templater = jinja
+max_line_length = 80
+indent_unit = spaces
+indent_width = 2
+
+[sqlfluff:rules]
+capitalisation.keywords = upper
+# Disable specific rules if needed (e.g., L034 for SELECT * wildcards)
+exclude_rules = L034
+
+[sqlfluff:rules:layout]
+# Customize layout rules (e.g., spacing, alignment)
+spacing_before = 1
+spacing_after = 1

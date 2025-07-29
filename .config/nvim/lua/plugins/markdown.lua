@@ -1,9 +1,7 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-		-- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		config = function()
 			local md = require("render-markdown")
 
@@ -18,21 +16,17 @@ return {
 						icon = "",
 					},
 					custom = {
-						web = { pattern = "^http[s]?://", icon = "󰌹 ", highlight = "@markup.link.label" },
-						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "ErrorMsg" },
-						github = { pattern = "https://github.com", icon = " ", highlight = "@none" },
-						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "@constructor" },
+						web = { pattern = "^http[s]?://", icon = "󰌹 ", highlight = "Identifier" },
+						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "Error" },
+						github = { pattern = "https://github.com", icon = " ", highlight = "Constant" },
+						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "Debug" },
 					},
 				},
 				checkbox = {
+					-- enabled = false,
 					custom = {
-						subject_to_change = {
-							raw = "[~]",
-							rendered = " ",
-							highlight = "@function",
-							scope_highlight = nil,
-						},
-						todo = { raw = "[!]", rendered = "󰀃 ", highlight = "@constructor", scope_highlight = nil },
+						todo = { raw = "[~]", rendered = "󰀃 ", highlight = "Number", scope_highlight = nil },
+						change = { raw = "[!]", rendered = " ", highlight = "Constant", scope_highlight = nil },
 					},
 				},
 				quote = { repeat_linebreak = true },
@@ -53,9 +47,10 @@ return {
 					right_pad = 4,
 				},
 				callout = {
-					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "@function.macro" },
-					important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "@constant.macro" },
-					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "@module.php" },
+					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "Changed" },
+					important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "Constant" },
+					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "Define" },
+					example = { raw = "[!EXAMPLE]", rendered = " Example", highlight = "Comment" },
 				},
 			})
 		end,
