@@ -1,12 +1,14 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "codecompanion", "ipynb" },
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		config = function()
 			local md = require("render-markdown")
 
-			md.setup({
+			local opts = {
 				enabled = true,
+				render_modes = { "n", "c", "t", "i", "V", "v" },
 				indent = {
 					enabled = false,
 					per_level = 2,
@@ -24,9 +26,13 @@ return {
 				},
 				checkbox = {
 					-- enabled = false,
+					checked = {
+						highlight = "RenderMarkdownChecked",
+						scope_highlight = "Strikethrough",
+					},
 					custom = {
-						todo = { raw = "[~]", rendered = "󰀃 ", highlight = "Number", scope_highlight = nil },
-						change = { raw = "[!]", rendered = " ", highlight = "Constant", scope_highlight = nil },
+						todo = { raw = "[~]", rendered = "󰀃 ", highlight = "Special", scope_highlight = nil },
+						change = { raw = "[!]", rendered = " ", highlight = "Boolean", scope_highlight = nil },
 					},
 				},
 				quote = { repeat_linebreak = true },
@@ -42,9 +48,8 @@ return {
 					highlight = "RenderMarkdownBullet",
 				},
 				code = {
-					width = "block",
 					left_pad = 2,
-					right_pad = 4,
+					border = "thick",
 				},
 				callout = {
 					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "Changed" },
@@ -52,7 +57,21 @@ return {
 					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "Define" },
 					example = { raw = "[!EXAMPLE]", rendered = " Example", highlight = "Comment" },
 				},
-			})
+			}
+
+			md.setup(opts)
+
+			-- -- Avante buffer customization
+			-- vim.api.nvim_create_autocmd({ "FileType" }, {
+			-- 	pattern = "codecompanion",
+			-- 	callback = function()
+			-- 		local extended_opts = vim.tbl_extend("force", opts, {
+			-- 			heading = { enabled = true, position = "inline", backgrounds = {} },
+			-- 		})
+			--
+			-- 		md.setup(extended_opts)
+			-- 	end,
+			-- })
 		end,
 	},
 	{

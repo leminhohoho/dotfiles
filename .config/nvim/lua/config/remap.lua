@@ -45,6 +45,11 @@ silent_bind("n", "<leader>td", function()
 			width = 0.8,
 			height = 0.8,
 		},
+		borderchars = {
+			prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+			preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		},
 	})
 end)
 
@@ -62,6 +67,20 @@ silent_bind("n", "<leader>ss", ":Namu symbols<CR>")
 
 -- Remove openning pop ups
 silent_bind("n", "<leader><leader>", "<cmd>NoiceDismiss<CR>")
+
+-- open float todo
+silent_bind("n", "<leader>do", ":Todo<CR>")
+
+-- open float draft
+silent_bind("n", "<leader>dr", ":Draft<CR>")
+
+-- open planner for current week
+silent_bind("n", "<leader>pc", ":Planner current<CR>")
+silent_bind("n", "<leader>pn", ":Planner next<CR>")
+silent_bind("n", "<leader>pv", ":Planner prev<CR>")
+
+-- create/open a snippet note
+silent_bind("n", "<leader>cs", ":Snippet<CR>")
 
 -------------------- CODING KEYMAPS --------------------
 -- Go to start & end of line
@@ -82,8 +101,8 @@ silent_bind("n", "<leader>h", ":Treewalker Left<CR>")
 silent_bind("n", "<leader>l", ":Treewalker Right<CR>")
 
 -------------------- NOTE TAKING KEYMAPS --------------------
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "*.md",
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
+	pattern = "markdown",
 	callback = function()
 		-- Open TOC
 		silent_bind("n", "<leader>toc", ":ObsidianTOC<CR>")
@@ -135,5 +154,10 @@ vim.api.nvim_create_user_command("W", function(args)
 end, {
 	nargs = 0,
 })
+
+-- Activate otter.nvim for LSP in markdown code blocks
+vim.api.nvim_create_user_command("Otter", function()
+	require("otter").activate()
+end, {})
 
 -------------------- MISCELLANEOUS --------------------

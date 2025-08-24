@@ -47,6 +47,10 @@ vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 
 			-- Zen mode background
 			vim.api.nvim_set_hl(0, "ZenBg", { bg = "none" })
+
+			-- render-markdown
+			vim.api.nvim_set_hl(0, "@markup.quote.markdown", { link = "Normal" })
+			vim.api.nvim_set_hl(0, "Strikethrough", { fg = "#928374", strikethrough = true })
 		end
 	end,
 })
@@ -55,9 +59,9 @@ vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*.md",
 	callback = function()
-		vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { bg = "none", fg = "#d29922", bold = true })
-		vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { bg = "none", fg = "#3fb950", bold = true })
-		vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { bg = "none", fg = "#ab8ad1", bold = true })
+		-- vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { bg = "none", fg = "#d29922", bold = true })
+		-- vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { bg = "none", fg = "#3fb950", bold = true })
+		-- vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { bg = "none", fg = "#ab8ad1", bold = true })
 		vim.api.nvim_set_hl(0, "Normal", { fg = "#ebdbb2" })
 		vim.api.nvim_set_hl(0, "NormalNC", { fg = "#ebdbb2" })
 	end,

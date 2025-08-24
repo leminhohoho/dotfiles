@@ -2,7 +2,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
-vim.opt.scrolloff = 20
+vim.opt.scrolloff = 0
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
 vim.o.smartindent = true
@@ -33,3 +33,10 @@ vim.g.db_ui_execute_on_save = 0
 ------------------- MISCELLANEOUS -------------------
 -- Set line breaks to preserve words
 vim.cmd("set linebreak")
+
+-- Treat Avante buffer as markdown
+vim.filetype.add({
+	extension = {
+		codecompanion = "markdown",
+	},
+})

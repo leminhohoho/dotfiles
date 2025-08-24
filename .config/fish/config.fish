@@ -1,5 +1,6 @@
 set -g -x fish_greeting ''
 
+
 function fish_prompt
     string join '' -- (set_color green) '[' $USER ']' (set_color blue) (prompt_pwd) (set_color normal) '> '
 end
@@ -14,10 +15,13 @@ set -x ELECTRON_OZONE_PLATFORM_HINT wayland
 set -x QT_QPA_PLATFORM xcb
 set -x GDK_BACKEND wayland
 set -x XDG_CONFIG_HOME "$HOME/.config"
+set -x MOZ_ENABLE_WAYLAND 1
 # set -x QT_SCALE_FACTOR 2  # Try this or unset QT_SCALE_FACTOR
 
 set -x MANPAGER "nvim +Man!"
 set -x FZF_DEFAULT_OPTS "--color 'bg:#181818'"
+
+source ~/.config/fish/env.fish
 
 fish_add_path /bin
 fish_add_path ~/bin
@@ -53,3 +57,6 @@ end
 starship init fish | source
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# opencode
+fish_add_path /home/leminhohoho/.opencode/bin

@@ -36,20 +36,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- Turn of Neovim built in 's zig formatter
+-- Turn off Neovim built in 's zig formatter
 vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 	pattern = "*.zig",
 	callback = function()
 		vim.g.zig_fmt_autosave = 0
-	end,
-})
-
--- Disable stay-center when on markdown files
-vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost" }, {
-	pattern = "*.md",
-	callback = function()
-		require("stay-centered").toggle()
-		vim.opt_local.scrolloff = 23
 	end,
 })
 
@@ -67,7 +58,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
 		local map = function(keys, func, desc)
-			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, silent = true })
 		end
 
 		-- defaults:
@@ -76,9 +67,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("J", vim.diagnostic.open_float, "Open Diagnostic Float")
 		map("K", vim.lsp.buf.hover, "Hover Documentation")
 		map("<leader>gs", vim.lsp.buf.signature_help, "Signature Documentation")
-		map("<leader>gd", vim.lsp.buf.definition, "Goto Declaration")
+		map("<leader>gr", require("telescope.builtin").lsp_references, "Signature Documentation")
+		map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
+		map("<leader>pd", require("goto-preview").goto_preview_definition, "Goto Declaration")
 		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 		map("<leader>cr", vim.lsp.buf.rename, "Rename all references")
-		map("<leader>sgd", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 	end,
 })

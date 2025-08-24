@@ -4,8 +4,8 @@ return {
 	opts = {
 		image = {
 			doc = {
-				max_width = 30,
-				max_height = 30,
+				max_width = 40,
+				max_height = 40,
 			},
 			math = {
 				enabled = true,

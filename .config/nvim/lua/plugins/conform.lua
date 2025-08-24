@@ -31,10 +31,10 @@ return {
 				},
 				golines = {
 					command = home .. "/go/bin/golines",
-					args = { "--max-len=120" },
+					args = { "--max-len=150" },
 				},
 				black = {
-					args = { "--line-length", "120", "--quiet", "-" },
+					args = { "--line-length", "150", "--quiet", "-" },
 				},
 				sqlfluff = {
 					command = home .. "/.local/bin/sqlfluff",

@@ -1,16 +1,18 @@
 vim.lsp.enable({
 	"gopls",
 	"lua_ls",
+	"basedpyright",
+	"ts_ls",
 })
 
 vim.diagnostic.config({
-	virtual_lines = true,
-	-- virtual_text = true,
+	virtual_lines = false,
+	virtual_text = true,
 	underline = true,
-	update_in_insert = false,
+	update_in_insert = true,
 	severity_sort = true,
 	float = {
-		border = "rounded",
+		border = "none",
 		source = true,
 	},
 	signs = {

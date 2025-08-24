@@ -29,6 +29,7 @@ return {
 					overrides = {
 						daily_notes = {
 							folder = "daily notes",
+							date_format = "%Y.%m.%d",
 						},
 					},
 				},
