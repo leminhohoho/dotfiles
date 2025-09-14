@@ -16,9 +16,10 @@ return {
 				go = { "goimports", "golines" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
-				python = { "black" },
+				python = { "ruff_format" },
 				json = { "jq" },
 				css = { "prettierd" },
+				html = { "prettierd" },
 				zig = { "zigfmt" },
 				sql = { "sql_formatter" },
 			},
@@ -35,6 +36,9 @@ return {
 				},
 				black = {
 					args = { "--line-length", "150", "--quiet", "-" },
+				},
+				ruff = {
+					args = {},
 				},
 				sqlfluff = {
 					command = home .. "/.local/bin/sqlfluff",

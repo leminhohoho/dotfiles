@@ -18,6 +18,7 @@ return {
 						icon = "",
 					},
 					custom = {
+						excalidraw = { pattern = "%.excalidraw$", icon = " ", highlight = "@float" },
 						web = { pattern = "^http[s]?://", icon = "󰌹 ", highlight = "Identifier" },
 						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "Error" },
 						github = { pattern = "https://github.com", icon = " ", highlight = "Constant" },
@@ -31,11 +32,30 @@ return {
 						scope_highlight = "Strikethrough",
 					},
 					custom = {
-						todo = { raw = "[~]", rendered = "󰀃 ", highlight = "Special", scope_highlight = nil },
-						change = { raw = "[!]", rendered = " ", highlight = "Boolean", scope_highlight = nil },
+						doing = { raw = "[~]", rendered = "󰀃 ", highlight = "Special", scope_highlight = "Doing" },
+						fail = {
+							raw = "[!]",
+							rendered = " ",
+							highlight = "Error",
+							scope_highlight = "Failed",
+						},
 					},
 				},
 				quote = { repeat_linebreak = true },
+				win_options = {
+					showbreak = {
+						default = "",
+						rendered = "  ",
+					},
+					breakindent = {
+						default = false,
+						rendered = true,
+					},
+					breakindentopt = {
+						default = "",
+						rendered = "",
+					},
+				},
 				heading = {
 					enabled = false,
 				},

@@ -80,7 +80,13 @@ silent_bind("n", "<leader>pn", ":Planner next<CR>")
 silent_bind("n", "<leader>pv", ":Planner prev<CR>")
 
 -- create/open a snippet note
-silent_bind("n", "<leader>cs", ":Snippet<CR>")
+silent_bind("n", "<leader>ns", ":Snippet<CR>")
+
+-- create/open a resource note
+silent_bind("n", "<leader>nr", ":ResourceNew<CR>")
+
+-- create/open a fleeting note
+silent_bind("n", "<leader>nf", ":FleetingNew<CR>")
 
 -------------------- CODING KEYMAPS --------------------
 -- Go to start & end of line
@@ -110,6 +116,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 		silent_bind("n", "<leader>st", ":ObsidianTags<CR>")
 		-- Rename file (update across backlinks)
 		silent_bind("n", "<leader>rn", ":ObsidianRename<CR>")
+		-- Search resources notes
+		silent_bind("n", "<leader>fr", ":ResourcesList<CR>")
 
 		-- Command for inserting code block
 		vim.api.nvim_create_user_command("Block", function(opts)
@@ -161,3 +169,44 @@ vim.api.nvim_create_user_command("Otter", function()
 end, {})
 
 -------------------- MISCELLANEOUS --------------------
+-- find project resources
+vim.api.nvim_create_user_command("ResourcesList", function()
+	vim.cmd("ObsidianBacklinks")
+
+	vim.defer_fn(function()
+		vim.api.nvim_feedkeys("resources", "i", true)
+	end, 200)
+end, {})
+
+-- Choose french language
+vim.api.nvim_create_user_command("FrenchChar", function()
+	vim.ui.select(
+		{
+			"ù",
+			"û",
+			"ü",
+			"ÿ",
+			"€",
+			"à",
+			"â",
+			"æ",
+			"ç",
+			"é",
+			"è",
+			"ê",
+			"ë",
+			"ï",
+			"î",
+			"ô",
+			"œ",
+		}, -- items to select from
+		{ prompt = "Choose an character:" }, -- optional opts
+		function(choice) -- callback
+			if choice then
+				vim.cmd("normal! a" .. choice)
+			else
+				print("Selection cancelled")
+			end
+		end
+	)
+end, {})

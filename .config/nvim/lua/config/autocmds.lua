@@ -74,3 +74,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>cr", vim.lsp.buf.rename, "Rename all references")
 	end,
 })
+
+-- Syncing note between server on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "/home/leminhohoho/note-taking/Monadikos/*",
+	callback = function()
+		print("Syncing note")
+		vim.fn.jobstart(
+			"! rsync -avz --delete ~/note-taking/Monadikos/ leminhohoho@100.99.22.39:/home/leminhohoho/Monadikos"
+		)
+	end,
+})

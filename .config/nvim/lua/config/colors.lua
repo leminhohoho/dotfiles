@@ -2,14 +2,17 @@
 vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 	callback = function()
 		-- Modify color scheme for transparency mode
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-		vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
-		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-		vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
-		vim.api.nvim_set_hl(0, "WinBarNC", { bg = "none" })
-		vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", fg = "#3c3836" })
-		vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+		if not vim.g.neovide then
+			print("gotcha")
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+			vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+			vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
+			vim.api.nvim_set_hl(0, "WinBarNC", { bg = "none" })
+			vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", fg = "#3c3836" })
+			vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+		end
 
 		-- Modify color for illuminate.nvim
 		vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#504954", underline = false })
@@ -51,6 +54,8 @@ vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 			-- render-markdown
 			vim.api.nvim_set_hl(0, "@markup.quote.markdown", { link = "Normal" })
 			vim.api.nvim_set_hl(0, "Strikethrough", { fg = "#928374", strikethrough = true })
+			vim.api.nvim_set_hl(0, "Doing", { fg = "#d8a657", italic = true })
+			vim.api.nvim_set_hl(0, "Failed", { fg = "#ea6962", bold = true })
 		end
 	end,
 })

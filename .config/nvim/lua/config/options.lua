@@ -40,3 +40,9 @@ vim.filetype.add({
 		codecompanion = "markdown",
 	},
 })
+
+-- Neovide configuration
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono Nerd Font Mono:h8"
+	vim.g.neovide_scale_factor = 1.0
+end

@@ -4,6 +4,8 @@ return {
 	opts = {
 		keywords = {
 			TODO = { icon = " ", color = "info" },
+			ERROR = { icon = " ", color = "error" },
+			FATAL = { icon = " ", color = "error" },
 		},
 
 		colors = {

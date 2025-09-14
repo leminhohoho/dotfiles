@@ -47,6 +47,40 @@ local function get_week_range(offset)
 	return "Week " .. start_str .. " -> " .. end_str
 end
 
+local function get_month_range(offset)
+	-- Current date shifted by offset months
+	local now = os.date("*t", os.time())
+	local year = now.year
+	local month = now.month + offset
+
+	-- Adjust year/month for overflow (e.g., month = 13 → next year January)
+	while month > 12 do
+		month = month - 12
+		year = year + 1
+	end
+	while month < 1 do
+		month = month + 12
+		year = year - 1
+	end
+
+	-- First day of the month
+	local month_start = { year = year, month = month, day = 1 }
+
+	-- Last day of the month: trick → first day of next month minus 1 day
+	local next_month, next_year = month + 1, year
+	if next_month > 12 then
+		next_month = 1
+		next_year = year + 1
+	end
+	local month_end_time = os.time({ year = next_year, month = next_month, day = 1 }) - 24 * 60 * 60
+	local month_end = os.date("*t", month_end_time)
+
+	local start_str = string.format("%04d-%02d-%02d", month_start.year, month_start.month, month_start.day)
+	local end_str = string.format("%04d-%02d-%02d", month_end.year, month_end.month, month_end.day)
+
+	return "Month " .. start_str .. " -> " .. end_str
+end
+
 local function open_float(opts, file_path)
 	local buf = vim.fn.bufnr(file_path, true)
 
@@ -95,7 +129,7 @@ local function setup_user_cmds(opts)
 
 		print(offset)
 
-		open_float(opts, "/home/leminhohoho/note-taking/Monadikos/planners/" .. get_week_range(offset) .. ".md")
+		open_float(opts, "/home/leminhohoho/note-taking/Monadikos/weekly_planners/" .. get_week_range(offset) .. ".md")
 	end, {
 		nargs = "?",
 		complete = function(arg_lead)
@@ -116,7 +150,46 @@ local function setup_user_cmds(opts)
 		end,
 	})
 
-	vim.api.nvim_create_user_command("Snippet", function(cmd_opts)
+	vim.api.nvim_create_user_command("MonthlyPlanner", function(cmd_opts)
+		local opt = cmd_opts.args ~= "" and cmd_opts.args or ""
+
+		local offset = 0
+
+		if opt == "" or opt == "current" then
+			offset = 0
+		elseif opt == "next" then
+			offset = 1
+		elseif opt == "prev" then
+			offset = -1
+		end
+
+		print(offset)
+
+		open_float(
+			opts,
+			"/home/leminhohoho/note-taking/Monadikos/monthly_planners/" .. get_month_range(offset) .. ".md"
+		)
+	end, {
+		nargs = "?",
+		complete = function(arg_lead)
+			local suggestions = {
+				"current",
+				"next",
+				"prev",
+			}
+
+			local filtered = {}
+			for _, suggestion in ipairs(suggestions) do
+				if suggestion:lower():find(arg_lead:lower(), 1, true) then
+					table.insert(filtered, suggestion)
+				end
+			end
+
+			return filtered
+		end,
+	})
+
+	vim.api.nvim_create_user_command("Snippet", function()
 		local name = vim.fn.input("Enter snippet name:")
 		local today = os.date("%Y-%m-%d")
 
@@ -124,6 +197,28 @@ local function setup_user_cmds(opts)
 			opts,
 			"/home/leminhohoho/note-taking/Monadikos/0 knowledge/1 snippets/" .. today .. "_" .. name .. ".md"
 		)
+	end, {})
+
+	vim.api.nvim_create_user_command("ResourceNew", function()
+		local name = vim.fn.input("Enter resource name:")
+		local today = os.date("%Y-%m-%d")
+		local filename = today .. "_" .. name .. ".md"
+		local projects_dir = "/home/leminhohoho/note-taking/Monadikos/2 projects/"
+
+		local buf = open_float(opts, projects_dir .. "0 resources/" .. filename)
+
+		vim.api.nvim_buf_call(buf, function()
+			vim.cmd("ObsidianTemplate resource")
+		end)
+	end, {})
+
+	vim.api.nvim_create_user_command("FleetingNew", function()
+		local name = vim.fn.input("Enter fleeting name:")
+		local today = os.date("%Y-%m-%d")
+		local filename = today .. "_" .. name .. ".md"
+		local knowledge_dir = "/home/leminhohoho/note-taking/Monadikos/0 knowledge/"
+
+		open_float(opts, knowledge_dir .. "0 fleeting/" .. filename)
 	end, {})
 end
 

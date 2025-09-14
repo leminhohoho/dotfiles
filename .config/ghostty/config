@@ -32,3 +32,5 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 0.5
 
 macos-option-as-alt = true
+
+# custom-shader = shaders/starfield.glsl

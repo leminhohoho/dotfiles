@@ -7,6 +7,7 @@
   "codecompanion.nvim": { "branch": "main", "commit": "a61730e84f92453390a4e1250482033482c33e84" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "csvview.nvim": { "branch": "main", "commit": "22c9450d19749aa80cc42f0c968cb9dd57726ece" },
+  "excalidraw.nvim": { "branch": "main", "commit": "0d1babd50e6dd3e41359df03946d0e4d1c7f1f5f" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "github-nvim-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },

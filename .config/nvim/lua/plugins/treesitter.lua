@@ -30,6 +30,8 @@ return {
 					"rasi",
 					"gotmpl",
 					"sql",
+					"bash",
+					"fish",
 				},
 				sync_install = false,
 				highlight = { enable = true },
