@@ -3,6 +3,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"basedpyright",
 	"ts_ls",
+	"marksman",
 })
 
 vim.diagnostic.config({

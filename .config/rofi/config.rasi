@@ -4,55 +4,45 @@ configuration {
   show-icons: true;
 }
 
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+
 * {
     font: "JetBrainsMono Nerd Font Mono 10";
-    selected-normal-foreground:  rgba ( 249, 249, 249, 100 % );
-    foreground:                  rgba ( 196, 203, 212, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 64, 69, 82, 59 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 249, 249, 249, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 204, 102, 102, 100 % );
-    alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
-    active-foreground:           rgba ( 101, 172, 255, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
-    alternate-active-background: rgba ( 75, 81, 96, 89 % );
-    background:                  rgba ( 45, 48, 59, 95 % );
-    alternate-normal-foreground: @foreground;
-    normal-background:           @background;
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 64, 132, 214, 100 % );
-    border-color:                rgba(255,99,71,1.000);
-    spacing:                     2;
-    separatorcolor:              rgba ( 29, 31, 33, 100 % );
-    urgent-background:           rgba ( 29, 31, 33, 17 % );
-    selected-urgent-background:  rgba ( 165, 66, 66, 100 % );
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 29, 31, 33, 17 % );
-    selected-active-background:  rgba ( 68, 145, 237, 100 % );
-}
-
-entry {
-    placeholder: "";
-}
-
-element {
-  orientation: horizontal;
-  children: [  element-icon, element-text ];
-  spacing: 5px;
+    background-color: rgba(50, 48, 47, 0.0);     /* semi-transparent base */
 }
 
 window {
-    background-color: rgba(255,99,71,0.4);
+    background-color: rgba(50, 48, 47, 0.5);       /* ensure window container is semi-transparent */
+    border-radius: 5px;
+    border: 1px solid;
+    padding: 4px;
 }
 
-entry, element-text {
-  background-color:  rgba(255,99,71,0.4);
+element {
+    border-radius: 5px;
+    padding: 4px;
+    margin: 4px 0;
 }
 
+element-icon {
+    padding: 0 4px;
+}
+
+listview {
+    lines: 10;
+    scrollbar: false;
+    border: 0;
+    background-color: rgba(50, 48, 47, 0.0);       /* optionally fully transparent background for listview */
+}
+
+element normal.normal,
+element normal.active,
+element alternate.normal {
+    background-color: rgba(50, 48, 47, 0.0);       /* match the transparency of rows */
+}
+
+element normal.active {
+    color: #F9EEC5;
+}
 
 

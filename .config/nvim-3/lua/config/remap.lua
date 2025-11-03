@@ -118,6 +118,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 		silent_bind("n", "<leader>rn", ":ObsidianRename<CR>")
 		-- Search resources notes
 		silent_bind("n", "<leader>fr", ":ResourcesList<CR>")
+		-- Open french character pallete
+		silent_bind("n", "fc", ":FrenchChar<CR>")
 
 		-- Command for inserting code block
 		vim.api.nvim_create_user_command("Block", function(opts)

@@ -1,9 +1,3 @@
--- Trigger file updating in real time
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-	pattern = "*",
-	command = "checktime",
-})
-
 -- Retrieve the initial (root) directory for telescope
 vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 	callback = function()
@@ -18,38 +12,6 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 				vim.cmd("cd " .. path)
 			end
 		end
-	end,
-})
-
--- Enable format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		local filetype = vim.bo.filetype
-
-		-- NOTE: using lsp built in formatter for certain language for faster speed
-		if filetype == "go" or filetype == "zig" then
-			vim.lsp.buf.format()
-		else
-			require("conform").format({ bufnr = args.buf })
-		end
-	end,
-})
-
--- Turn off Neovim built in 's zig formatter
-vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
-	pattern = "*.zig",
-	callback = function()
-		vim.g.zig_fmt_autosave = 0
-	end,
-})
-
--- Specific configuration for csv files
-vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost" }, {
-	pattern = "*.csv",
-	callback = function()
-		vim.cmd("CsvViewEnable")
-		vim.opt_local.wrap = false
 	end,
 })
 
@@ -71,17 +33,59 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
 		map("<leader>pd", require("goto-preview").goto_preview_definition, "Goto Declaration")
 		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-		map("<leader>cr", vim.lsp.buf.rename, "Rename all references")
+		map("<leader>ss", vim.lsp.buf.document_symbol, "Symbols")
+		map("<leader>cr", function(...)
+			vim.lsp.buf.rename(...)
+		end, "Rename all references")
 	end,
 })
 
--- Syncing note between server on save
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "/home/leminhohoho/note-taking/Monadikos/*",
+-- Enable format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		local filetype = vim.bo.filetype
+
+		-- NOTE: using lsp built in formatter for certain language for faster speed
+		if filetype == "go" or filetype == "zig" then
+			vim.lsp.buf.format()
+		else
+			require("conform").format({ bufnr = args.buf })
+		end
+	end,
+})
+
+-- Add molten.nvim kernel status only when in python/markdown/ipynb files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "python", "ipynb" },
 	callback = function()
-		print("Syncing note")
-		vim.fn.jobstart(
-			"! rsync -avz --delete ~/note-taking/Monadikos/ leminhohoho@100.99.22.39:/home/leminhohoho/Monadikos"
-		)
+		require("lualine").setup({
+			sections = {
+				lualine_y = {
+					{
+						function()
+							return ""
+						end,
+						cond = function()
+							return require("molten.status").kernels() ~= ""
+						end,
+						color = function()
+							return {
+								fg = string.format("#%06x", vim.api.nvim_get_hl(0, { name = "Debug" }).fg),
+							}
+						end,
+						padding = { left = 1, right = 0 },
+					},
+					{
+						function()
+							return require("molten.status").kernels()
+						end,
+						cond = function()
+							return require("molten.status").kernels() ~= ""
+						end,
+					},
+				},
+			},
+		})
 	end,
 })

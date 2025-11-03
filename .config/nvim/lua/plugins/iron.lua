@@ -3,19 +3,30 @@ return {
 	config = function()
 		local iron = require("iron.core")
 		local view = require("iron.view")
-		local common = require("iron.fts.common")
 
 		local python_config = {
-			command = { "ipython", "--no-banner" }, -- or { "ipython", "--no-autoindent" }
-			-- command = { "rustpython", "-q" },
+			command = function()
+				local exec_cmd = vim.fn.input("exec command (empty for default)")
+				if exec_cmd == "" then
+					return { "ipython", "--no-banner" }
+				end
+
+				local args = {}
+
+				for arg in exec_cmd:gmatch("%S+") do
+					table.insert(args, arg)
+				end
+
+				return args
+			end,
 			format = require("iron.fts.common").bracketed_paste,
-			block_dividers = { "# %%", "#%%" },
 		}
 
 		iron.setup({
 			config = {
 				-- Whether a repl should be discarded or not
 				scratch_repl = true,
+				close_window_on_exit = true,
 				-- Your repl definitions come here
 				repl_definition = {
 					sh = {
@@ -23,6 +34,7 @@ return {
 						-- returns a table (see below)
 						command = { "zsh" },
 					},
+					-- python = python_config,
 					python = python_config,
 					markdown = python_config,
 				},
@@ -36,7 +48,7 @@ return {
 				end,
 				-- How the repl window will be displayed
 				-- See below for more information
-				repl_open_cmd = view.split.vertical.rightbelow("%50"),
+				repl_open_cmd = view.split.horizontal.rightbelow("%30"),
 
 				-- repl_open_cmd can also be an array-style table so that multiple
 				-- repl_open_commands can be given.
@@ -61,8 +73,8 @@ return {
 				-- toggle_repl_with_cmd_1 = "<space>rv",
 				-- toggle_repl_with_cmd_2 = "<space>rh",
 				restart_repl = "<space>rR", -- calls `IronRestart` to restart the repl
-				send_motion = "<space>sc",
-				visual_send = "<space>sc",
+				-- send_motion = "<space>sc",
+				-- visual_send = "<space>sc",
 				send_file = "<space>sf",
 				send_line = "<space>sl",
 				send_paragraph = "<space>sp",

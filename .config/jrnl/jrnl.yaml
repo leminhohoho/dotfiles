@@ -1,0 +1,18 @@
+colors:
+  body: none
+  date: CYAN
+  tags: YELLOW
+  title: none
+default_hour: 9
+default_minute: 0
+editor: nvim
+encrypt: false
+highlight: true
+indent_character: '│'
+journals:
+  default: /home/leminhohoho/note-taking/Monadikos/jrnls/daily.md
+linewrap: 79
+tagsymbols: '#@'
+template: false
+timeformat: '%F %r'
+version: v4.2.1

@@ -34,13 +34,6 @@ vim.g.db_ui_execute_on_save = 0
 -- Set line breaks to preserve words
 vim.cmd("set linebreak")
 
--- Treat Avante buffer as markdown
-vim.filetype.add({
-	extension = {
-		codecompanion = "markdown",
-	},
-})
-
 -- Neovide configuration
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font Mono:h8"

@@ -5,7 +5,6 @@ return {
 	opts = {},
 	config = function()
 		local conform = require("conform")
-		local home = vim.fn.expand("~")
 
 		conform.setup({
 			formatters_by_ft = {
@@ -18,10 +17,10 @@ return {
 				cpp = { "clang_format" },
 				python = { "ruff_format" },
 				json = { "jq" },
-				css = { "prettierd" },
+				css = { "prettier" },
 				html = { "prettierd" },
 				zig = { "zigfmt" },
-				sql = { "sql_formatter" },
+				-- sql = { "sql_formatter" },
 			},
 
 			timeout_ms = 10000,
@@ -59,3 +58,4 @@ return {
 		})
 	end,
 }
+

@@ -60,3 +60,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # opencode
 fish_add_path /home/leminhohoho/.opencode/bin
+
+function mpvbg
+    mpv --no-video --loop=inf --hwdec=vaapi --ytdl-format=bestaudio --af-add=acompressor=ratio=4:threshold=0.1 --volume=54 $argv
+end

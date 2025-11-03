@@ -1,9 +1,8 @@
 background = 282828
-# background-opacity = 0.8
 # background-blur = 20 
 
 font-family = JetBrainsMono Nerd Font Mono
-font-size = 5.5
+font-size = 6.5
 
 bold-is-bright = true
 
@@ -34,3 +33,8 @@ mouse-scroll-multiplier = 0.5
 macos-option-as-alt = true
 
 # custom-shader = shaders/starfield.glsl
+background = 282828
+background = 141414
+background = 282828
+
+config-file = ".config"

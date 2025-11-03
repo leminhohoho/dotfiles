@@ -11,5 +11,7 @@ return {
 				enabled = true,
 			},
 		},
+		-- picker = { enabled = true },
+		flash = { enabled = true },
 	},
 }

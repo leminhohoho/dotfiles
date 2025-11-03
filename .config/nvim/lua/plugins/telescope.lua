@@ -1,34 +1,62 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		{
+			"echasnovski/mini.icons",
+			"crispgm/telescope-heading.nvim",
+			opts = {},
+			config = function()
+				require("mini.icons").mock_nvim_web_devicons()
+			end,
+		},
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
 	config = function()
 		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+
+		-- Create a custom layout strategy for ui select
+		require("telescope.pickers.layout_strategies").ui_select = function(...)
+			local layout = require("telescope.pickers.layout_strategies").horizontal(...)
+			layout.prompt.height = layout.prompt.height + 1
+			return layout
+		end
 
 		telescope.setup({
 			defaults = {
-				theme = "center",
-				borderchars = {
-					results = { " ", " ", "─", "│", "│", " ", "─", "└" },
-					prompt = { "─", " ", " ", "│", "┌", "─", " ", "│" },
-					preview = { "─", "│", "─", "│", "┬", "┐", "┘", "┴" },
-				},
+				prompt_prefix = "   ",
+				borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
 				layout_config = {
 					horizontal = {
 						prompt_position = "top",
-						preview_width = 0.5,
+						preview_width = 0.55,
+					},
+					width = 0.8,
+					height = 0.9,
+				},
+				layout_strategy = "horizontal",
+				theme = "center",
+				file_ignore_patterns = { "node_modules", "%.lock", "%.git/", "dist/" },
+				mappings = {
+					i = {
+						["<esc>"] = actions.close,
 					},
 				},
-				-- Default sorting strategy: descending for most recently used files
-				sorting_strategy = "descending", -- You can also experiment with "ascending"
-				layout_strategy = "horizontal", -- Layout style (could be vertical or horizontal)
-				file_ignore_patterns = { "node_modules", "%.lock", "%.git/", "dist/" },
 			},
-			pickers = {
-				find_files = {
-					find_command = { "rg", "--files", "--sortr=modified" },
+			pickers = { find_files = { find_command = { "rg", "--files", "--sortr=modified" } } },
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({
+						borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+						layout_strategy = "ui_select",
+					}),
 				},
 			},
 		})
+
+		telescope.load_extension("ui-select")
+		telescope.load_extension("heading")
 	end,
 }

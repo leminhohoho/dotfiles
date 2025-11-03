@@ -1,15 +1,13 @@
 return {
-	{
-		"projekt0n/github-nvim-theme",
-		-- priority = 1000,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		config = true,
-		opts = ...,
-	},
-	{
-		"sainnhe/gruvbox-material",
-		priority = 1000,
-	},
+	{ "sainnhe/gruvbox-material" },
+    { "shaunsingh/nord.nvim" },
+    {
+        "zenbones-theme/zenbones.nvim",
+        dependencies = "rktjmp/lush.nvim",
+    },
+    { "xero/miasma.nvim" },
+    { 'datsfilipe/vesper.nvim' },
+    { "navarasu/onedark.nvim" },
+    { 'kdheepak/monochrome.nvim' }
 }
+

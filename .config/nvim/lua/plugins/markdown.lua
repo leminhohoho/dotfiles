@@ -15,18 +15,31 @@ return {
 				},
 				link = {
 					wiki = {
-						icon = "",
+						icon = " ",
 					},
 					custom = {
-						excalidraw = { pattern = "%.excalidraw$", icon = " ", highlight = "@float" },
-						web = { pattern = "^http[s]?://", icon = "󰌹 ", highlight = "Identifier" },
-						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "Error" },
-						github = { pattern = "https://github.com", icon = " ", highlight = "Constant" },
-						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "Debug" },
+						web = { pattern = "^http[s]?://", icon = "󰖟 ", highlight = "Blue" },
+						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "YoutubeLink" },
+						github = { pattern = "https://github.com", icon = " ", highlight = "GithubLink" },
+						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "RedditLink" },
+						google_colab = {
+							pattern = "https://colab.research.google.com",
+							icon = " ",
+							highlight = "ColabLink",
+						},
+						pytorch_doc = {
+							pattern = "https://docs.pytorch.org",
+							icon = " ",
+							highlight = "TorchDocLink",
+						},
+						numpy_doc = {
+							pattern = "https://numpy.org",
+							icon = " ",
+							highlight = "NumpyLink",
+						},
 					},
 				},
 				checkbox = {
-					-- enabled = false,
 					checked = {
 						highlight = "RenderMarkdownChecked",
 						scope_highlight = "Strikethrough",
@@ -74,24 +87,13 @@ return {
 				callout = {
 					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "Changed" },
 					important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "Constant" },
+					warn = { raw = "[!WARN]", rendered = " Warning", highlight = "WarningMsg" },
 					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "Define" },
 					example = { raw = "[!EXAMPLE]", rendered = " Example", highlight = "Comment" },
 				},
 			}
 
 			md.setup(opts)
-
-			-- -- Avante buffer customization
-			-- vim.api.nvim_create_autocmd({ "FileType" }, {
-			-- 	pattern = "codecompanion",
-			-- 	callback = function()
-			-- 		local extended_opts = vim.tbl_extend("force", opts, {
-			-- 			heading = { enabled = true, position = "inline", backgrounds = {} },
-			-- 		})
-			--
-			-- 		md.setup(extended_opts)
-			-- 	end,
-			-- })
 		end,
 	},
 	{
