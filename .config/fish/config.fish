@@ -11,8 +11,8 @@ set -e OPENAI_API_KEY
 # set -x GDK_BACKEND wayland
 # set -x XDG_CONFIG_HOME "$HOME/.config"
 # set -x QT_SCALE_FACTOR 1
+set -x QT_QPA_PLATFORM wayland
 set -x ELECTRON_OZONE_PLATFORM_HINT wayland
-set -x QT_QPA_PLATFORM xcb
 set -x GDK_BACKEND wayland
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x MOZ_ENABLE_WAYLAND 1
@@ -20,8 +20,6 @@ set -x MOZ_ENABLE_WAYLAND 1
 
 set -x MANPAGER "nvim +Man!"
 set -x FZF_DEFAULT_OPTS "--color 'bg:#181818'"
-
-source ~/.config/fish/env.fish
 
 fish_add_path /bin
 fish_add_path ~/bin
@@ -33,6 +31,9 @@ fish_add_path go/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
+fish_add_path ~/.config/scripts
+fish_add_path /opt/nvim/bin
+
 
 function dotfiles
     /usr/bin/git --git-dir=$HOME/dot-files/ --work-tree=$HOME $argv
@@ -44,11 +45,6 @@ function brightness
    /bin/brightnessctl -d "apple-panel-bl" set $argv 
 end
 
-function pdf
-    /bin/zathura $argv&
-    disown
-end
-
 function run_electron
     $argv --appimage-extract-and-run --js-flags="--nodecommit_pooled_pages" & 
     disown
@@ -58,9 +54,31 @@ starship init fish | source
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# opencode
-fish_add_path /home/leminhohoho/.opencode/bin
-
 function mpvbg
     mpv --no-video --loop=inf --hwdec=vaapi --ytdl-format=bestaudio --af-add=acompressor=ratio=4:threshold=0.1 --volume=54 $argv
+end
+
+function load_env_vars -d "Load variables in a .env file"
+    set lines (cat $argv | string split -n '\n' | string match -vre '^#')
+    for line in $lines
+        set arr (string split -n -m 1 = $line)
+        if test (count $arr) -ne 2
+            continue
+        end
+        set -gx $arr[1] $arr[2]
+    end
+end
+
+load_env_vars ~/.env
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+function l
+    $HOME/.cargo/bin/exa -la --icons $argv
+end
+
+function code
+    /bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland $argv
 end

@@ -1,0 +1,11 @@
+[timer]
+work = 25.0        
+break = 5.0       
+long_break = 15.0
+sessions = 4    
+auto_advance = true
+
+[sound]
+volume = 0.7
+
+

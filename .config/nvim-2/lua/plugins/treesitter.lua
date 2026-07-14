@@ -4,12 +4,6 @@ return {
 		build = ":TSUpdate",
 		config = function()
 			local configs = require("nvim-treesitter.configs")
-			-- vim.filetype.add({
-			-- 	extension = {
-			-- 		d2 = "d2",
-			-- 	},
-			-- })
-
 			configs.setup({
 				ensure_installed = {
 					"python",
@@ -29,7 +23,6 @@ return {
 					"latex",
 					"templ",
 					"http",
-					"csv",
 					"vue",
 					"bash",
 					"fish",
@@ -37,10 +30,12 @@ return {
 					"rasi",
 					"gotmpl",
 					"sql",
+					"bash",
+					"fish",
 				},
 				sync_install = false,
 				highlight = { enable = true },
-				-- indent = { enable = true },
+				indent = { enable = false },
 			})
 		end,
 	},

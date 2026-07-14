@@ -1,38 +1,39 @@
-(
-    defwindow example
-            :monitor 0
-            :geometry 
-            (
-                geometry    
-                    :x "0%"
-                    :y "20px"
-                    :width "90%"
-                    :height "30px"
-                    :anchor "top center"
-            )
-           :stacking "fg"
-           :reserve (struts :distance "40px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
-    (
-        greeter 
-            :text "Sup bitches"
-            :name "Tim"
+(defpoll time :interval "1s"
+    "date '+%H:%M'"
+)
+
+(defwidget clock []
+    (eventbox
+        :class "clock"
+        :orientation "horizontal"
+        :halign "center"
+        :cursor "pointer"
+        (button
+            :onclick "brave-browser --profile-directory=Default --app=https://web.morgen.so/"
+            time
+        )
     )
 )
 
-(
-    defwidget greeter [?text name]
-        (
-            box 
-                :orientation "horizontal"
-                :halign "center"
-                text
-                (
-                    button 
-                        :onclick "notify-send 'Hello' 'Hello, ${name}'"
-                        "Greet"
-                )
-        )
+(defwidget layout []
+    (box
+        :class "layout"
+        :orientation "vertical"
+        :halign "center"
+        (clock)
+    )
 )
 
+(defwindow bar
+    :class "bar"
+    :monitor 0
+    :geometry (geometry    
+        :x "0%"
+        :y "-32px"
+        :anchor "top center"
+    )
+    :stacking "fg"
+    :windowtype "dock"
+    :wm-ignore true
+    (layout)
+)

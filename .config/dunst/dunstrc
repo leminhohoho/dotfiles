@@ -1,0 +1,16 @@
+[global]
+    origin = top-right
+    offset = (14, 14)
+    font = JetBrainsMono Nerd Font 8
+    frame_width = 1
+    frame_color = "#83A598"
+    padding = 12
+    horizontal_padding = 12
+    transparency = 0
+    background = "#45858870"
+    foreground = "#EBDBB2"
+    corner_radius = 5
+    gap_size = 8
+    timeout = 5
+
+

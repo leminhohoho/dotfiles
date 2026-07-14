@@ -42,20 +42,38 @@ tooltip {
   color: #FBF1C7;
 }
 
-
-.modules-right {
-  margin-right: 8px;
+#mpris.stopped,
+#mpris.paused,
+#mpris.playing {
+  margin-left: 8px;
   margin-top: 8px;
+  padding: 4px 12px;
+  background: rgba(69, 133, 136, 0.2);
+  border: 1px solid rgba(69, 133, 136, 1);
+  border-radius: 5px;
+  color: rgba(69, 133, 136, 1);
+}
+
+#mpris:hover {
+  background: rgba(69, 133, 136, 0.5);
+  transition: all 0.2s ease-in-out;
 }
 
 #window {
-  margin-right: 8px;
+  margin-left: 8px;
   margin-top: 8px;
   padding: 0 10px;
   background: rgba(61, 61, 61, 0.2);
   border: 1px solid rgba(61, 61, 61, 1);
   border-radius: 5px;
 }
+
+
+.modules-right {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
 
 #window.empty {
     opacity: 0;
@@ -65,14 +83,13 @@ tooltip {
   margin-top: 8px;
   margin-left: 8px;
   padding: 4px 12px;
-  background: rgba(152, 151, 26, 0.2);
-  border: 1px solid rgba(152, 151, 26, 1);
-  color: rgba(184, 187, 38, 1);
+  background: rgba(61, 61, 61, 0.2);
+  border: 1px solid rgba(61, 61, 61, 1);
   border-radius: 5px;
 }
 
 #clock:hover {
-  background: rgba(152, 151, 26, 0.5);
+  background: rgba(61, 61, 61, 0.5);
   transition: all 0.2s ease-in-out;
 }
 
@@ -110,12 +127,22 @@ tooltip {
   padding-right: 15px;
 }
 
+#network:hover {
+  background: rgba(198, 174, 147, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
 #memory {
   margin-left: 8px;
   padding: 4px 12px;
   background: rgba(198, 174, 147, 0.1);
   border: 1px solid rgba(198, 174, 147, 1);
   border-radius: 5px;
+}
+
+#memory:hover {
+  background: rgba(198, 174, 147, 0.5);
+  transition: all 0.2s ease-in-out;
 }
 
 #cpu {
@@ -126,21 +153,11 @@ tooltip {
   border-radius: 5px;
 }
 
-#mpris.stopped,
-#mpris.paused,
-#mpris.playing {
-  margin-left: 8px;
-  padding: 4px 12px;
-  background: rgba(69, 133, 136, 0.2);
-  border: 1px solid rgba(69, 133, 136, 1);
-  border-radius: 5px;
-  color: rgba(131, 165, 152, 1);
-}
-
-#mpris:hover {
-  background: rgba(69, 133, 136, 0.5);
+#cpu:hover {
+  background: rgba(198, 174, 147, 0.5);
   transition: all 0.2s ease-in-out;
 }
+
 
 #pulseaudio {
   margin-left: 8px;
@@ -172,3 +189,16 @@ tooltip {
   transition: all 0.2s ease-in-out;
 }
 
+#custom-todo {
+  margin-left: 8px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: rgba(61, 61, 61, 0.2);
+  border: 1px solid rgba(61, 61, 61, 1);
+  border-radius: 5px;
+}
+
+#custom-todo:hover {
+  background: rgba(61, 61, 61, 0.5);
+  transition: all 0.2s ease-in-out;
+}

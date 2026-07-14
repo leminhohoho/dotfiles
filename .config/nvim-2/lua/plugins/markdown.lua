@@ -1,41 +1,74 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-		-- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		ft = { "markdown", "codecompanion", "ipynb", "rmd" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		config = function()
 			local md = require("render-markdown")
 
-			md.setup({
+			local opts = {
 				enabled = true,
+				render_modes = { "n", "c", "t", "i", "V", "v" },
 				indent = {
 					enabled = false,
 					per_level = 2,
 				},
 				link = {
 					wiki = {
-						icon = "",
+						icon = " ",
 					},
 					custom = {
-						web = { pattern = "^http[s]?://", icon = "󰌹 ", highlight = "@markup.link.label" },
-						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "ErrorMsg" },
-						github = { pattern = "https://github.com", icon = " ", highlight = "@none" },
-						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "@constructor" },
+						web = { pattern = "^http[s]?://", icon = "󰖟 ", highlight = "Blue" },
+						youtube = { pattern = "^https://www.youtube.com", icon = "󰗃 ", highlight = "YoutubeLink" },
+						github = { pattern = "https://github.com", icon = " ", highlight = "GithubLink" },
+						reddit = { pattern = "https://www.reddit.com", icon = " ", highlight = "RedditLink" },
+						google_colab = {
+							pattern = "https://colab.research.google.com",
+							icon = " ",
+							highlight = "ColabLink",
+						},
+						pytorch_doc = {
+							pattern = "https://docs.pytorch.org",
+							icon = " ",
+							highlight = "TorchDocLink",
+						},
+						numpy_doc = {
+							pattern = "https://numpy.org",
+							icon = " ",
+							highlight = "NumpyLink",
+						},
 					},
 				},
 				checkbox = {
+					checked = {
+						highlight = "RenderMarkdownChecked",
+						scope_highlight = "Strikethrough",
+					},
 					custom = {
-						subject_to_change = {
-							raw = "[~]",
+						doing = { raw = "[~]", rendered = "󰀃 ", highlight = "Special", scope_highlight = "Doing" },
+						fail = {
+							raw = "[!]",
 							rendered = " ",
-							highlight = "@function",
-							scope_highlight = nil,
+							highlight = "Error",
+							scope_highlight = "Failed",
 						},
-						todo = { raw = "[!]", rendered = "󰀃 ", highlight = "@constructor", scope_highlight = nil },
 					},
 				},
 				quote = { repeat_linebreak = true },
+				win_options = {
+					showbreak = {
+						default = "",
+						rendered = "  ",
+					},
+					breakindent = {
+						default = false,
+						rendered = true,
+					},
+					breakindentopt = {
+						default = "",
+						rendered = "",
+					},
+				},
 				heading = {
 					enabled = false,
 				},
@@ -48,16 +81,19 @@ return {
 					highlight = "RenderMarkdownBullet",
 				},
 				code = {
-					width = "block",
 					left_pad = 2,
-					right_pad = 4,
+					border = "thick",
 				},
 				callout = {
-					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "@function.macro" },
-					important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "@constant.macro" },
-					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "@module.php" },
+					note = { raw = "[!NOTE]", rendered = "✎ Note", highlight = "Changed" },
+					important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "Constant" },
+					warn = { raw = "[!WARN]", rendered = " Warning", highlight = "WarningMsg" },
+					dictionary = { raw = "[!DICT]", rendered = "󱓷 Dictionary", highlight = "Define" },
+					example = { raw = "[!EXAMPLE]", rendered = " Example", highlight = "Comment" },
 				},
-			})
+			}
+
+			md.setup(opts)
 		end,
 	},
 	{

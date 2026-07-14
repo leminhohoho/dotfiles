@@ -1,26 +1,42 @@
--- Functions to retreive the initial directory path (for telescope,...)
-local function change_dir_from_argv()
-	local argv = vim.fn.argv()
-
-	if #argv > 0 then
-		local path = argv[1]
-
-		local is_dir = vim.fn.isdirectory(path) == 1
-
-		if is_dir then
-			vim.cmd("cd " .. path)
-		end
-	end
-end
-
+-- Retrieve the initial (root) directory for telescope
 vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
-	callback = change_dir_from_argv,
+	callback = function()
+		local argv = vim.fn.argv()
+
+		if #argv > 0 then
+			local path = argv[1]
+
+			local is_dir = vim.fn.isdirectory(path) == 1
+
+			if is_dir then
+				vim.cmd("cd " .. path)
+			end
+		end
+	end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
-	pattern = "*.zig",
-	callback = function()
-		vim.g.zig_fmt_autosave = 0
+-- Lsp features
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+	callback = function(event)
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, silent = true })
+		end
+
+		-- defaults:
+		-- https://neovim.io/doc/user/news-0.11.html#_defaults
+
+		map("J", vim.diagnostic.open_float, "Open Diagnostic Float")
+		map("K", vim.lsp.buf.hover, "Hover Documentation")
+		map("<leader>gs", vim.lsp.buf.signature_help, "Signature Documentation")
+		map("<leader>gr", require("telescope.builtin").lsp_references, "Signature Documentation")
+		map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
+		map("<leader>pd", require("goto-preview").goto_preview_definition, "Goto Declaration")
+		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+		map("<leader>ss", require("telescope.builtin").lsp_document_symbols, "Symbols")
+		map("<leader>cr", function(...)
+			vim.lsp.buf.rename(...)
+		end, "Rename all references")
 	end,
 })
 
@@ -30,33 +46,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(args)
 		local filetype = vim.bo.filetype
 
+		-- NOTE: using lsp built in formatter for certain language for faster speed
 		if filetype == "go" or filetype == "zig" then
 			vim.lsp.buf.format()
 		else
 			require("conform").format({ bufnr = args.buf })
 		end
-	end,
-})
---
--- -- Optisns for csv files
--- vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
--- 	callback = function(args)
--- 		filetype = vim.bo[args.buf].filetype
--- 		if filetype == "csv" then
--- 			vim.cmd("CsvViewEnable")
--- 			vim.opt.wrap = false
--- 		else
--- 			vim.cmd("CsvViewDisable")
--- 			vim.cmd("set wrap")
--- 			vim.cmd("set linebreak")
--- 		end
--- 	end,
--- })
-
--- Disable wrap for .dbout
-vim.api.nvim_create_autocmd({ "BufRead", "BufRead", "BufNewFile" }, {
-	pattern = "*.sql",
-	callback = function()
-		vim.cmd("setlocal wrap")
 	end,
 })
